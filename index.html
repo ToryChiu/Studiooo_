@@ -20,6 +20,11 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
 .moscow-choice .tile{padding-right:32px;position:relative}.moscow-choice .tile:after{content:"";position:absolute;right:11px;top:15px;width:14px;height:14px;border:1px solid #b7afa4;border-radius:4px}.moscow-choice input:checked+.tile:after{content:"✓";background:#897862;color:white;border-color:#897862;text-align:center;font-size:12px;line-height:14px}.moscow-choice input:disabled+.tile{opacity:1;color:#a49f98;background:#f7f7f6;border-color:#eeece8}.moscow-choice input:disabled+.tile .meta{color:#aaa49d}
 
 .site-nav{position:sticky;top:0;z-index:4;background:rgba(248,247,244,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid #eae6e0;padding:10px 12px}.nav-inner{max-width:728px;margin:auto;display:flex;gap:5px;justify-content:center}.site-nav a{color:#827a70;text-decoration:none;font-size:12px;padding:11px 13px;border-radius:9px;white-space:nowrap}.site-nav a[aria-current="page"]{background:#eee8df;color:#302c27}.site-nav a:focus-visible,.faq-item summary:focus-visible{outline:2px solid #897862;outline-offset:3px}.page-intro{padding:15px 6px 20px}.page-intro h2{font-size:30px;font-weight:400;margin:10px 0}.page-intro p{font-size:13px;color:#898179;line-height:1.9}.empty-gallery{text-align:center;padding:55px 20px}.empty-gallery .gallery-mark{font:italic 34px Georgia,serif;color:#b5a38e;margin-bottom:23px}.empty-gallery h3{font-size:17px;font-weight:500}.empty-gallery p{font-size:12px;line-height:1.9;color:#898179}.page-link{display:inline-block;color:#5d5143;text-decoration:none;font-size:12px;padding:12px 17px;background:#f5f1e9;border-radius:9px;margin-top:15px}.faq-item{border-top:1px solid #ece8e2;padding:0 2px}.faq-item:first-of-type{border-top:0}.faq-item summary{cursor:pointer;font-size:13px;font-weight:500;line-height:1.8;padding:20px 0;list-style:none;display:flex;justify-content:space-between;gap:18px}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{content:'+';color:#9e8d78;font-size:18px}.faq-item[open] summary:after{content:'−'}.faq-item p{font-size:12px;color:#817970;line-height:2;margin:0 0 22px}.faq-intro{font-size:12px;color:#898179;line-height:1.9}.page-section{scroll-margin-top:78px}@media(max-width:380px){.site-nav a{font-size:11px;padding:10px}.page-intro h2{font-size:26px}}
+
+@font-face{font-family:"Studio Song";src:url("studio-song.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Studio Typewriter";src:url("studio-typewriter.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+.brand,.hero,.panel h2,.summary h2,.page-intro h2,.empty-gallery h3{font-family:"Studio Typewriter","Studio Song","Songti SC","STSong","SimSun",serif;font-synthesis:none;font-weight:700}
+.brand{font-size:22px;letter-spacing:1px}.hero{font-size:clamp(29px,7.6vw,46px);letter-spacing:-1.6px;line-height:1.25}.panel h2{font-size:22px}.summary h2{font-size:24px}.page-intro h2{font-size:34px}.eyebrow{font-family:"Studio Typewriter",Courier,monospace;letter-spacing:1.3px}.gallery-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding-bottom:8px}.gallery-top .page-link{margin-top:0;flex-shrink:0}.gallery-help{font-size:11px;color:#958c80;line-height:1.8;margin:10px 0 18px}.gallery-controls{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 12px}.tag-button{font:inherit;font-size:11px;border:1px solid #e2dbd1;border-radius:30px;background:transparent;color:#84796b;padding:9px 13px;cursor:pointer}.tag-button[aria-pressed="true"]{background:#383029;color:#fff;border-color:#383029}.tag-button:focus-visible{outline:2px solid #897862;outline-offset:3px}.gallery-search{width:100%;border:1px solid #e6e0d8;background:#fff;border-radius:11px;padding:12px 14px;font:inherit;font-size:12px;color:#302c27}.gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 13px;margin-top:17px}.gallery-card{min-width:0;overflow:hidden;border-radius:13px;background:white;border:1px solid #eae6e0}.gallery-card img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;background:#eee9e1}.gallery-card-body{padding:14px}.gallery-card h3{font-size:12px;font-weight:500;line-height:1.85;margin:0 0 9px;overflow-wrap:anywhere}.gallery-tags{display:flex;gap:6px;flex-wrap:wrap}.gallery-tag{font-size:10px;padding:4px 7px;background:#f5f1eb;color:#8a7760;border-radius:5px}.gallery-card a{display:block;margin-top:13px;color:#8a7a65;font-size:11px;text-decoration:none;padding:4px 0}.gallery-result{font-size:11px;color:#9c9286;line-height:1.8}.gallery-empty{padding:40px 16px;text-align:center;background:#fff;border-radius:13px;font-size:12px;color:#8f8373;line-height:2}@media(max-width:480px){.gallery-card-body{padding:11px}.gallery-grid{gap:14px 10px}.gallery-top{display:block}.gallery-top .page-link{margin-top:4px}.page-intro h2{font-size:31px}.panel h2{font-size:21px}}
 </style>
 </head>
 <body>
@@ -53,7 +58,11 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
 </div>
 <section id="galleryPage" class="page-section hidden" aria-labelledby="galleryHeading" hidden>
 <div class="page-intro"><div class="eyebrow">REAL STORIES / SELECTED WORK</div><h2 id="galleryHeading" tabindex="-1">客片展示</h2><p>在莫斯科与圣彼得堡，记录属于你们的真实瞬间。</p></div>
-<div class="panel empty-gallery"><div class="gallery-mark">Stories, together.</div><h3>精选客片整理中</h3><p>这里将收录我们的真实客片与拍摄故事。<br>小红书精选笔记即将陆续加入。</p><a class="page-link" href="#plan">先看看适合你们的拍摄方案 →</a></div>
+<div class="gallery-top"><p class="hint">婚纱 · 婚礼客片 / 秋鴿</p><a class="page-link" id="collectionLink" target="_blank" rel="noopener noreferrer" href="https://www.xiaohongshu.com/collection/item/6871bd58018f000000000001?xhsshare=CopyLink&appuid=63e50b95000000002702b74b&apptime=1791503443&share_id=e3dc5b746e884b3485ff5395e614ec1c">打开完整小红书合集 ↗</a></div>
+<p class="gallery-help">这里展示合集网页可读取的 10 篇客片；更多作品及新笔记请查看完整合集。地点标签根据标题识别，不代表笔记内全部拍摄场景。</p>
+<div class="gallery-controls" id="galleryFilters" role="group" aria-label="按城市和地点筛选客片"></div>
+<label class="hidden" for="gallerySearch">搜索客片标题</label><input class="gallery-search" id="gallerySearch" type="search" placeholder="搜索标题关键词，例如：查理津诺、莫大" aria-label="搜索客片标题">
+<p class="gallery-result" id="galleryResult" role="status" aria-live="polite"></p><div class="gallery-grid" id="galleryGrid"></div><div id="galleryEmpty" class="gallery-empty hidden">当前收录的笔记标题未匹配这个关键词。<br>完整合集可能包含更多相关作品。</div>
 </section>
 <section id="faqPage" class="page-section hidden" aria-labelledby="faqHeading" hidden>
 <div class="page-intro"><div class="eyebrow">BEFORE YOUR SESSION</div><h2 id="faqHeading" tabindex="-1">Q&amp;A</h2><p>把常见问题说清楚，让拍摄前的准备更轻松。</p></div>
@@ -231,6 +240,49 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
     if(focus){window.scrollTo(0,0);var heading=document.getElementById(key==='gallery'?'galleryHeading':key==='faq'?'faqHeading':'cityHeading');heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true})}
   }
   window.addEventListener('hashchange',function(){navigate(true)});navigate(false);
+})();
+</script>
+
+<script>
+(function(){
+ 'use strict';
+ // Current public collection snapshot. Never label this list as a live or complete feed.
+ var NOTES=[{"cover": "gallery-01.jpg", "title": "莫斯科婚纱｜有人想一边旅游一边拍婚纱吗？💃"}, {"cover": "gallery-02.jpg", "title": "🇷🇺圣彼得堡婚纱｜钟楼和教堂的浪漫"}, {"cover": "gallery-03.jpg", "title": "莫斯科这个隐藏机位，真的太适合i人拍婚纱了"}, {"cover": "gallery-04.jpg", "title": "莫斯科还有比这更权威的夕阳婚纱照吗"}, {"cover": "gallery-05.jpg", "title": "莫斯科婚纱约拍 ｜ 凌晨三点的日照莫大主楼"}, {"cover": "gallery-06.jpg", "title": "莫斯科蓝调婚纱封神！这组可能难以复刻了✨"}, {"cover": "gallery-07.jpg", "title": "🇷🇺圣彼得堡婚纱｜弗拉基米尔宫简直顶流"}, {"cover": "gallery-08.jpg", "title": "莫斯科查理津诺婚纱照｜八月还有少量档期哦"}, {"cover": "gallery-09.jpg", "title": "6-7月拍到的绝美莫斯科婚纱照们"}, {"cover": "gallery-10.jpg", "title": "莫斯科婚纱约拍｜查理津诺庄园篇"}];
+ var RULES=[
+  {tag:'莫斯科',words:['莫斯科','moscow']},{tag:'圣彼得堡',words:['圣彼得堡','st. petersburg','saint petersburg']},
+  {tag:'红场',words:['红场','古姆','圣瓦西里','red square']},
+  {tag:'查理津诺',words:['查理津诺','查理金诺','察里津诺','царицыно','tsaritsyno']},
+  {tag:'莫大主楼',words:['莫大','莫斯科国立大学']},
+  {tag:'弗拉基米尔宫',words:['弗拉基米尔','vladimir']},
+  {tag:'冬宫',words:['冬宫','艾尔米塔什','hermitage']},
+  {tag:'VDNKh',words:['vdnkh','全俄展览','вднх']},
+  {tag:'卡洛明斯克',words:['卡洛明斯克','科洛缅斯科耶','коломенское']},
+  {tag:'库斯科沃',words:['库斯科沃','кусково']},
+  {tag:'喀山大教堂',words:['喀山']},{tag:'圣伊萨克',words:['圣伊萨克','圣以撒']}
+ ];
+ function tags(title){var text=title.toLowerCase();return RULES.filter(function(rule){return rule.words.some(function(word){return text.indexOf(word.toLowerCase())!==-1})}).map(function(rule){return rule.tag})}
+ NOTES.forEach(function(note){note.tags=tags(note.title)});
+ var active='全部',search=document.getElementById('gallerySearch'),grid=document.getElementById('galleryGrid');
+ var collectionUrl=document.getElementById('collectionLink').href;
+ var available=['全部'].concat(RULES.filter(function(rule){return rule.tag==='红场'||NOTES.some(function(note){return note.tags.indexOf(rule.tag)!==-1})}).map(function(rule){return rule.tag}));
+ function updateGallery(){
+  var term=search.value.trim().toLowerCase();var aliases=RULES.filter(function(rule){return rule.words.some(function(word){return word.toLowerCase()===term})}).map(function(rule){return rule.tag});
+  var matches=NOTES.filter(function(note){return (active==='全部'||note.tags.indexOf(active)!==-1)&&(!term||note.title.toLowerCase().indexOf(term)!==-1||note.tags.some(function(tag){return aliases.indexOf(tag)!==-1}))});
+  document.querySelectorAll('#galleryFilters button').forEach(function(button){button.setAttribute('aria-pressed',String(button.dataset.tag===active))});
+  grid.replaceChildren();
+  matches.forEach(function(note){
+   var card=document.createElement('article');card.className='gallery-card';
+   if(note.cover){var image=document.createElement('img');image.src=note.cover;image.alt=note.title+' · 小红书客片封面';image.loading='lazy';image.decoding='async';image.width=540;image.height=720;image.addEventListener('error',function(){image.classList.add('hidden')});card.appendChild(image)}
+   var body=document.createElement('div');body.className='gallery-card-body';
+   var heading=document.createElement('h3');heading.textContent=note.title;body.appendChild(heading);
+   var badges=document.createElement('div');badges.className='gallery-tags';note.tags.forEach(function(tag){var badge=document.createElement('span');badge.className='gallery-tag';badge.textContent=tag;badges.appendChild(badge)});body.appendChild(badges);
+   var link=document.createElement('a');link.href=collectionUrl;link.target='_blank';link.rel='noopener noreferrer';link.textContent='在小红书合集查看 ↗';link.setAttribute('aria-label','打开小红书合集，查看：'+note.title);body.appendChild(link);card.appendChild(body);grid.appendChild(card);
+  });
+  document.getElementById('galleryResult').textContent='当前展示 '+matches.length+' 篇客片'+(active==='全部'?'':' · '+active);
+  document.getElementById('galleryEmpty').classList.toggle('hidden',matches.length!==0);
+ }
+ available.forEach(function(tag){var button=document.createElement('button');button.type='button';button.className='tag-button';button.dataset.tag=tag;var count=tag==='全部'?NOTES.length:NOTES.filter(function(note){return note.tags.indexOf(tag)!==-1}).length;button.textContent=tag+' · '+count;button.addEventListener('click',function(){active=tag;updateGallery()});document.getElementById('galleryFilters').appendChild(button)});
+ search.addEventListener('input',updateGallery);updateGallery();
 })();
 </script>
 </body>
