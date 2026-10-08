@@ -17,6 +17,7 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
 .preview-warning{background:#fff5e8;color:#754b22;border:1px solid #ead1ac;border-radius:12px;padding:14px 16px;margin:14px 0 20px;font-size:13px;line-height:1.8}.preview-warning strong{display:block;margin-bottom:3px}
 .sticky{position:fixed;bottom:0;left:0;right:0;background:rgba(249,247,244,.97);border-top:1px solid #e7e1d9;padding:11px max(16px,env(safe-area-inset-right)) calc(11px + env(safe-area-inset-bottom));z-index:3;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}.sticky-in{max-width:728px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}.sticky-label{font-size:11px;color:#8b837a}.sticky-total{font-size:22px;letter-spacing:-.5px;font-variant-numeric:tabular-nums}.sticky-button{border:0;background:#33312d;color:#fff;border-radius:9px;padding:12px 15px;font-size:12px;white-space:nowrap;cursor:pointer}
 @media(max-width:480px){.panel{padding:17px}.tile{padding:12px;min-height:92px}.options{gap:8px}.hero{margin-top:25px}.summary{padding:21px}.total{font-size:36px}.name{font-size:12.5px}.price{font-size:17px}}
+.moscow-choice .tile{padding-right:32px;position:relative}.moscow-choice .tile:after{content:"";position:absolute;right:11px;top:15px;width:14px;height:14px;border:1px solid #b7afa4;border-radius:4px}.moscow-choice input:checked+.tile:after{content:"✓";background:#897862;color:white;border-color:#897862;text-align:center;font-size:12px;line-height:14px}.moscow-choice input:disabled+.tile{opacity:1;color:#a49f98;background:#f7f7f6;border-color:#eeece8}.moscow-choice input:disabled+.tile .meta{color:#aaa49d}
 </style>
 </head>
 <body>
@@ -29,7 +30,7 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
 <section class="panel" aria-labelledby="videoHeading"><div class="eyebrow">03 / FILM</div><h2 id="videoHeading">动态影像</h2><div class="options"><label class="choice"><input type="radio" name="film" value="none" checked><span class="tile"><span class="name">无需视频</span><span class="meta">仅婚纱摄影</span></span></label><label class="choice"><input type="radio" name="film" value="short"><span class="tile"><span class="name">婚纱动态影像</span><span class="meta">无剧情 · 纯BGM · 剪辑调色 · 不安排专业收音、对白及独白</span><span class="price">+¥1,800</span></span></label><label class="choice"><input type="radio" name="film" value="ceremony"><span class="tile"><span class="name">仪式及婚前影像</span><span class="meta">电影感分镜 · 收音/独白 · 剪辑调色</span><span class="price">+¥2,500</span></span></label></div><p class="hint">两档视频二选一，均为摄影同期加购；仪式演员可以单独选配。</p></section>
 <section class="panel" aria-labelledby="ceremonyHeading"><div class="eyebrow">04 / CEREMONY</div><h2 id="ceremonyHeading">私人誓言仪式</h2><div class="options"><label class="choice"><input type="radio" name="ceremony" value="no" checked><span class="tile"><span class="name">无需小仪式</span><span class="meta">自由拍摄</span></span></label><label class="choice"><input type="radio" name="ceremony" value="yes"><span class="tile"><span class="name">私人誓言仪式</span><span class="meta">本地仪式角色演员 · 基本流程沟通 · 誓言卡 · 现场协调</span><span class="price">+8,000₽</span><span class="meta">约¥670，仅供参考</span></span></label></div><p class="hint">预约配合时间约1小时内。由合作演员进行拍摄用仪式演绎，不具有正式法律或宗教效力。</p></section>
 <section class="panel" aria-labelledby="locationHeading"><div class="eyebrow">05 / LOCATION</div><h2 id="locationHeading">意向拍摄地点</h2>
-<div id="moscowLocations" class="hidden"><div class="explanation">莫斯科的路线将根据您喜欢的建筑和城市氛围、季节与天气，由摄影师共同规划。欢迎在发送方案时备注心仪地点。</div></div>
+<div id="moscowLocations" class="hidden"><p class="hint">自由勾选您喜欢的地点，系统会开放适合当前套餐与路线的组合。</p><div class="options"><label class="choice location-choice moscow-choice"><input type="checkbox" name="moscowPlace" value="M01" aria-describedby="reasonM01"><span class="tile"><span class="name">红场及周边（含古姆商场、圣瓦西里大教堂）</span><span class="meta" id="reasonM01"></span></span></label><label class="choice location-choice moscow-choice"><input type="checkbox" name="moscowPlace" value="M02" aria-describedby="reasonM02"><span class="tile"><span class="name">克里姆林宫内部及教堂群</span><span class="meta" id="reasonM02"></span></span></label><label class="choice location-choice moscow-choice"><input type="checkbox" name="moscowPlace" value="M03" aria-describedby="reasonM03"><span class="tile"><span class="name">国家大剧院</span><span class="meta" id="reasonM03"></span></span></label><label class="choice location-choice moscow-choice"><input type="checkbox" name="moscowPlace" value="M04" aria-describedby="reasonM04"><span class="tile"><span class="name">救世主大教堂</span><span class="meta" id="reasonM04"></span></span></label><label class="choice location-choice moscow-choice"><input type="checkbox" name="moscowPlace" value="M05" aria-describedby="reasonM05"><span class="tile"><span class="name">全俄展览中心 VDNKh</span><span class="meta" id="reasonM05"></span></span></label><label class="choice location-choice moscow-choice"><input type="checkbox" name="moscowPlace" value="M06" aria-describedby="reasonM06"><span class="tile"><span class="name">乌克兰大酒店</span><span class="meta" id="reasonM06"></span></span></label><label class="choice location-choice moscow-choice"><input type="checkbox" name="moscowPlace" value="M07" aria-describedby="reasonM07"><span class="tile"><span class="name">莫斯科国立大学主楼</span><span class="meta" id="reasonM07"></span></span></label><label class="choice location-choice moscow-choice"><input type="checkbox" name="moscowPlace" value="M08" aria-describedby="reasonM08"><span class="tile"><span class="name">外交部大楼</span><span class="meta" id="reasonM08"></span></span></label><label class="choice location-choice moscow-choice"><input type="checkbox" name="moscowPlace" value="M09" aria-describedby="reasonM09"><span class="tile"><span class="name">艺术家公寓</span><span class="meta" id="reasonM09"></span></span></label><label class="choice location-choice moscow-choice"><input type="checkbox" name="moscowPlace" value="M10" aria-describedby="reasonM10"><span class="tile"><span class="name">查理津诺庄园（Царицыно）</span><span class="meta" id="reasonM10"></span></span></label><label class="choice location-choice moscow-choice"><input type="checkbox" name="moscowPlace" value="M11" aria-describedby="reasonM11"><span class="tile"><span class="name">新圣女修道院公园</span><span class="meta" id="reasonM11"></span></span></label><label class="choice location-choice moscow-choice"><input type="checkbox" name="moscowPlace" value="M12" aria-describedby="reasonM12"><span class="tile"><span class="name">卡洛明斯克庄园（Коломенское）</span><span class="meta" id="reasonM12"></span></span></label><label class="choice location-choice moscow-choice"><input type="checkbox" name="moscowPlace" value="M13" aria-describedby="reasonM13"><span class="tile"><span class="name">库斯科沃庄园（Кусково）</span><span class="meta">具体路线需确认</span><span class="meta" id="reasonM13"></span></span></label><label class="choice location-choice moscow-choice"><input type="checkbox" name="moscowPlace" value="M14" aria-describedby="reasonM14"><span class="tile"><span class="name">莫斯科地铁站</span><span class="meta" id="reasonM14"></span></span></label><label class="choice location-choice moscow-choice"><input type="checkbox" name="moscowPlace" value="M15" aria-describedby="reasonM15"><span class="tile"><span class="name">莫斯科河游轮</span><span class="meta">游轮费用另计，价格待确认</span><span class="meta" id="reasonM15"></span></span></label><label class="choice location-choice moscow-choice"><input type="checkbox" name="moscowPlace" value="M16" aria-describedby="reasonM16"><span class="tile"><span class="name">武装力量大教堂</span><span class="meta">该地点为远郊独立拍摄路线，仅适用于精选摄影套餐，无法与其他市区地点组合。往返交通不计入实际摄影拍摄时长。</span><span class="meta" id="reasonM16"></span></span></label></div><p id="moscowNotice" class="notice" role="status"></p><div class="explanation" id="moscowSelected">尚未选择地点</div><p class="hint">所选地点为拍摄意向，实际拍摄路线将根据天气、自然光线、交通、场地开放情况及新人当天状态，由摄影师协调安排。我们更重视每一组作品的完整性，而非景点数量。</p></div>
 <div id="spbLocations"><p class="subheading">主要拍摄区域</p><div class="options">
 <label class="choice location-choice"><input type="radio" name="mainplace" value="none" checked><span class="tile"><span class="name">城市外景</span><span class="meta">按附近环境灵活规划</span></span></label>
 <label class="choice location-choice"><input type="radio" name="mainplace" value="hermitage"><span class="tile"><span class="name">冬宫＋冬宫广场</span><span class="meta">拍摄许可 15,000₽ · 入场门票另计；许可不限时，受开放时间和现场规定限制</span></span></label>
@@ -41,8 +42,8 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
 <label class="choice location-choice"><input type="checkbox" name="outdoor" value="book"><span class="tile"><span class="name">百年书店外景</span><span class="meta">紧邻喀山大教堂</span></span></label>
 <label class="choice location-choice"><input type="checkbox" name="outdoor" value="blood"><span class="tile"><span class="name">滴血大教堂</span></span></label></div>
 <p id="routeNotice" class="notice" aria-live="polite"></p></div></div>
-<p class="subheading">摄影师自由创作</p><label class="choice location-choice"><input type="checkbox" name="freestyle" value="yes"><span class="tile"><span class="name">让摄影师发现附近的惊喜 ✦</span><span class="meta">不局限于常规热门打卡地。摄影师可能根据当天的光线、天气及拍摄状态，带您探索附近的历史街巷、特色建筑或适合休息与拍摄的咖啡馆。不另收费，不占常规地点名额，不承诺增加景点。</span></span></label>
-<label class="subheading" for="locationNote">地点备注（选填）</label><textarea id="locationNote" maxlength="500" rows="3" placeholder="喜欢的建筑、氛围或其他需求"></textarea><p class="hint">地点选择用于表达拍摄偏好，不代表逐一拍摄承诺。最终顺序与组合将结合场地规定、天气、光线、交通及新人状态由摄影师确认。</p></section>
+<p class="subheading">摄影师自由创作</p><label class="choice location-choice"><input type="checkbox" name="freestyle" value="yes"><span class="tile"><span class="name">让摄影师发现附近的惊喜 ✦</span><span class="meta">不局限于常规热门打卡地。摄影师可能根据当天的光线、天气及拍摄状态，带您探索附近的历史街巷、特色建筑或适合休息与拍摄的咖啡馆。不另收费，不占常规地点名额，不承诺增加景点，不延长约定拍摄时段。</span></span></label>
+<p id="remoteFreestyle" class="hint hidden">自由创作仅限武装力量大教堂场地区域内，不代表增加市区景点，也不延长约定拍摄时段。</p><label class="subheading" for="locationNote">地点备注（选填）</label><textarea id="locationNote" maxlength="500" rows="3" placeholder="喜欢的建筑、氛围或其他需求"></textarea><p class="hint">地点选择用于表达拍摄偏好，不代表逐一拍摄承诺。最终顺序与组合将结合场地规定、天气、光线、交通及新人状态由摄影师确认。</p></section>
 <section class="summary" id="quote" aria-live="polite"><div class="eyebrow">YOUR PERSONAL SELECTION</div><h2>你的专属拍摄方案</h2><div id="lines"><div class="line"><span>圣彼得堡 · 精选摄影（含妆造）</span><strong>¥8,988</strong></div></div><div class="total-label">预计总价 · 人民币参考金额</div><div class="total" id="total">¥8,988</div><div class="rub" id="rub">暂无需要折算的卢布项目</div><p class="hint" style="color:#c7beb4">参考汇率：1₽ = ¥0.08375（固定预算参考，非实时）。卢布费用按此参考汇率折算，仅供预算估计，最终按付款时双方确认的汇率结算。场地入场门票和未选择的额外服务另计。此报价为初步参考，档期、场地许可、额外门票及实际方案须由摄影师确认。</p><button type="button" class="action" id="copy">复制我的方案，发给摄影师 →</button></section>
 <footer class="foot">秋鸽 Studiooo_ · MOSCOW / SAINT PETERSBURG<br>具体拍摄路线、档期和场地许可，以双方最终确认的方案为准。<br>© 2026 秋鸽 Studiooo_</footer>
 <section id="manualCopy" class="panel hidden" aria-labelledby="manualCopyHeading"><h2 id="manualCopyHeading">手动复制方案</h2><p class="hint">浏览器未允许自动复制，请长按下方文字，选择全选并复制。</p><textarea id="manualQuote" rows="12" readonly></textarea><button type="button" class="action" id="closeManualCopy">关闭</button></section></main>
@@ -55,6 +56,59 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
   var RUB_RATE=0.08375; // 展示参考汇率：8,000 RUB ≈ 670 CNY，非实时汇率
   var VENUE={hermitage:15000,vladimirPhoto:10500,vladimirVideo:13000};
   var PLACE_NAMES={isaac:'圣伊萨克大教堂',kazan:'喀山大教堂',book:'百年书店外景',blood:'滴血大教堂'};
+
+  // 摄影师内部规划数据，非导航结果；不在客户界面输出时间预算。
+  var MOSCOW_PLACES=[{"id":"M01","name":"红场及周边（含古姆商场、圣瓦西里大教堂）","minutes":180},{"id":"M02","name":"克里姆林宫内部及教堂群","minutes":60},{"id":"M03","name":"国家大剧院","minutes":30},{"id":"M04","name":"救世主大教堂","minutes":60},{"id":"M05","name":"全俄展览中心 VDNKh","minutes":180},{"id":"M06","name":"乌克兰大酒店","minutes":60},{"id":"M07","name":"莫斯科国立大学主楼","minutes":60},{"id":"M08","name":"外交部大楼","minutes":60},{"id":"M09","name":"艺术家公寓","minutes":60},{"id":"M10","name":"查理津诺庄园（Царицыно）","minutes":120},{"id":"M11","name":"新圣女修道院公园","minutes":60},{"id":"M12","name":"卡洛明斯克庄园（Коломенское）","minutes":120},{"id":"M13","name":"库斯科沃庄园（Кусково）","minutes":120},{"id":"M14","name":"莫斯科地铁站","minutes":60},{"id":"M15","name":"莫斯科河游轮","minutes":120},{"id":"M16","name":"武装力量大教堂","minutes":180}];
+  var MOSCOW_BUDGET={A:180,B:360};
+  var MOSCOW_TRANSFERS={defaultMinutes:45,pairs:{'M01|M02':15,'M01|M03':15,'M01|M04':25,'M01|M14':15}};
+  var MOSCOW_ALLOWED_B=['M01|M10','M01|M12','M01|M05','M01|M13','M01|M03','M01|M04','M01|M14','M01|M02'];
+  var moscowById={};
+  MOSCOW_PLACES.forEach(function(p){moscowById[p.id]=p});
+  function transfer(a,b){return MOSCOW_TRANSFERS.pairs[[a,b].sort().join('|')]||MOSCOW_TRANSFERS.defaultMinutes}
+  function shortestTransfers(ids){
+    if(ids.length<2)return 0;
+    // 开放路线的最短 Hamilton 路径；结果与勾选顺序无关。
+    var memo={};
+    function visit(mask,last){
+      var key=mask+':'+last;
+      if(memo[key]!==undefined)return memo[key];
+      if(mask===(1<<ids.length)-1)return 0;
+      var best=Infinity;
+      for(var next=0;next<ids.length;next++)if(!(mask&(1<<next)))best=Math.min(best,transfer(ids[last],ids[next])+visit(mask|(1<<next),next));
+      return memo[key]=best;
+    }
+    var best=Infinity;
+    for(var start=0;start<ids.length;start++)best=Math.min(best,visit(1<<start,start));
+    return best;
+  }
+  function moscowValid(pkg,ids){
+    if(ids.some(function(id){return !moscowById[id]})||new Set(ids).size!==ids.length)return false;
+    if(ids.indexOf('M16')!==-1)return pkg==='A'&&ids.length===1;
+    if(pkg==='B'&&MOSCOW_ALLOWED_B.indexOf(ids.slice().sort().join('|'))!==-1)return true;
+    var shooting=ids.reduce(function(sum,id){return sum+moscowById[id].minutes},0);
+    if(shooting>MOSCOW_BUDGET[pkg])return false;
+    return shooting+shortestTransfers(ids)<=MOSCOW_BUDGET[pkg];
+  }
+  var cityMemory={moscow:{note:'',free:false},spb:{note:'',free:false}},previousCity='';
+  function updateMoscow(city,pkg){
+    var chosen=checked('moscowPlace'),adjusted=false;
+    if(!moscowValid(pkg,chosen)){
+      var kept=[];
+      chosen.forEach(function(id){
+        if(moscowValid(pkg,kept.concat(id)))kept.push(id);
+        else {document.querySelector('input[name="moscowPlace"][value="'+id+'"]').checked=false;adjusted=true}
+      });chosen=kept;
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('input[name="moscowPlace"]'),function(input){
+      input.disabled=!input.checked&&!moscowValid(pkg,chosen.concat(input.value));
+      e('reason'+input.value).textContent=input.disabled?(input.value==='M16'&&pkg==='B'?'仅适用于精选摄影套餐，需独立拍摄。':'当前套餐及已选路线暂不支持组合此地点。'):'';
+    });
+    e('moscowNotice').textContent=adjusted?'部分地点与当前套餐不兼容，已调整选择。':chosen.indexOf('M13')!==-1?'库斯科沃庄园的具体路线需由摄影师确认。':'地点为拍摄意向，最终路线由摄影师确认。';
+    e('moscowSelected').textContent=chosen.length?'已选地点：'+chosen.map(function(id){return moscowById[id].name}).join('、'):'尚未选择地点';
+    show('remoteFreestyle',city==='moscow'&&chosen.indexOf('M16')!==-1);
+    return chosen;
+  }
+
   var statusNote='';
   function e(id){return document.getElementById(id)}
   function selected(name){var node=document.querySelector('input[name="'+name+'"]:checked');return node?node.value:''}
@@ -73,6 +127,14 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
   }
   function update(){
     var city=selected('city')||'spb',pkg=selected('pkg')||'A',film=selected('film')||'none',hasCeremony=selected('ceremony')==='yes',main=selected('mainplace')||'none';
+    if(previousCity&&previousCity!==city){
+      cityMemory[previousCity]={note:e('locationNote').value,free:document.querySelector('input[name="freestyle"]').checked};
+      e('locationNote').value=cityMemory[city].note;
+      document.querySelector('input[name="freestyle"]').checked=cityMemory[city].free;
+    }
+    previousCity=city;
+    var moscowChosen=city==='moscow'?updateMoscow(city,pkg):[];
+    if(city!=='moscow')show('remoteFreestyle',false);
     var winterLocked=city==='spb'&&pkg==='A'&&main==='hermitage';
     e('priceA').textContent=money(PRICE[city].A);
     e('priceB').textContent=money(PRICE[city].B);
@@ -106,10 +168,17 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
     e('lines').innerHTML=rows.map(function(row){return '<div class="line"><span>'+row[0]+'</span><strong>'+row[1]+'</strong></div>'}).join('');
     e('total').textContent=money(total);e('stickyTotal').textContent=money(total);
     e('rub').textContent=rubTotal?'包含人民币固定项目 '+money(base+video)+' ＋ 卢布项目 '+rub(rubTotal)+'（约 '+money(rubCny)+'）':'人民币固定项目 '+money(base+video)+'，暂无卢布计价项目';
-    var placeNames=chosen.map(function(p){return PLACE_NAMES[p]});
+    var placeNames=city==='moscow'?moscowChosen.map(function(id){return moscowById[id].name}):chosen.map(function(p){return PLACE_NAMES[p]});
     if(document.querySelector('input[name="freestyle"]').checked)placeNames.push('摄影师自由创作');
-    var placeDescription=city==='moscow'?'莫斯科地点待沟通'+(placeNames.indexOf('摄影师自由创作')!==-1?'、摄影师自由创作':''):(main==='hermitage'?'冬宫＋冬宫广场':main==='vladimir'?'弗拉基米尔宫':'城市外景')+(placeNames.length?'、'+placeNames.join('、'):'');
-    var lines=['秋鸽 Studiooo_｜婚纱摄影定制意向','拍摄城市：'+(city==='moscow'?'莫斯科':'圣彼得堡'),'摄影套餐：'+(pkg==='A'?'精选摄影（2–3小时）':'完整摄影（4–6小时）')+' '+money(base)+'（含新娘妆造及跟妆）','视频服务：'+(film==='none'?'不加购':film==='short'?'无剧情动态影像 +¥1,800':'仪式及情绪影像 +¥2,500'),'私人誓言仪式：'+(hasCeremony?'8,000₽':'不加购'),'意向拍摄地点：'+placeDescription,'场地许可：'+(venue?rub(venue):'无已选付费场地'),'人民币部分：'+money(base+video),'卢布部分：'+rub(rubTotal),'人民币参考总价：'+money(total),'地点备注：'+(e('locationNote').value.trim()||'无'),'参考汇率：1₽ = ¥0.08375（固定参考，非实时）','备注：按参考汇率折算；实际卢布款项依付款时确认的汇率结算。场地入场门票和其他未选项目另计。','此报价为初步参考，档期、场地许可、额外门票及实际方案须由摄影师确认。'];
+    var placeDescription=city==='moscow'?(placeNames.length?placeNames.join('、'):'莫斯科地点待沟通'):(main==='hermitage'?'冬宫＋冬宫广场':main==='vladimir'?'弗拉基米尔宫':'城市外景')+(placeNames.length?'、'+placeNames.join('、'):'');
+    if(city==='moscow'&&moscowChosen.indexOf('M15')!==-1)placeDescription+='（游轮费用另计，待确认）';
+    if(city==='moscow'&&moscowChosen.indexOf('M13')!==-1)placeDescription+='（库斯科沃具体路线需确认）';
+    if(city==='moscow'&&moscowChosen.indexOf('M16')!==-1&&document.querySelector('input[name="freestyle"]').checked)placeDescription+='（自由创作仅限该场地区域内）';
+    var locationRow=document.createElement('div');locationRow.className='line';
+    var locationLabel=document.createElement('span');locationLabel.textContent='意向拍摄地点';
+    var locationValue=document.createElement('strong');locationValue.textContent=placeDescription;
+    locationRow.appendChild(locationLabel);locationRow.appendChild(locationValue);e('lines').appendChild(locationRow);
+    var lines=['秋鸽 Studiooo_｜婚纱摄影定制意向','拍摄城市：'+(city==='moscow'?'莫斯科':'圣彼得堡'),'摄影套餐：'+(pkg==='A'?'精选摄影（2–3小时）':'完整摄影（4–6小时）')+' '+money(base)+'（含新娘妆造及跟妆）','视频服务：'+(film==='none'?'不加购':film==='short'?'无剧情动态影像 +¥1,800':'仪式及情绪影像 +¥2,500'),'私人誓言仪式：'+(hasCeremony?'8,000₽':'不加购'),'意向拍摄地点：'+placeDescription,'摄影师自由创作：'+(document.querySelector('input[name="freestyle"]').checked?'已选择（不另收费）':'未选择'),'场地许可：'+(venue?rub(venue):'无已选付费场地'),'人民币部分：'+money(base+video),'卢布部分：'+rub(rubTotal),'人民币参考总价：'+money(total),'地点备注：'+(e('locationNote').value.trim()||'无'),'参考汇率：1₽ = ¥0.08375（固定参考，非实时）','备注：按参考汇率折算；实际卢布款项依付款时确认的汇率结算。场地入场门票和其他未选项目另计。','此报价为初步参考，档期、场地许可、额外门票及实际方案须由摄影师确认。'];
     e('copy').setAttribute('data-text',lines.join('\n'));
   }
   function fallbackCopy(text,button){
