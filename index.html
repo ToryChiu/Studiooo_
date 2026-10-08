@@ -18,11 +18,15 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
 .sticky{position:fixed;bottom:0;left:0;right:0;background:rgba(249,247,244,.97);border-top:1px solid #e7e1d9;padding:11px max(16px,env(safe-area-inset-right)) calc(11px + env(safe-area-inset-bottom));z-index:3;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}.sticky-in{max-width:728px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}.sticky-label{font-size:11px;color:#8b837a}.sticky-total{font-size:22px;letter-spacing:-.5px;font-variant-numeric:tabular-nums}.sticky-button{border:0;background:#33312d;color:#fff;border-radius:9px;padding:12px 15px;font-size:12px;white-space:nowrap;cursor:pointer}
 @media(max-width:480px){.panel{padding:17px}.tile{padding:12px;min-height:92px}.options{gap:8px}.hero{margin-top:25px}.summary{padding:21px}.total{font-size:36px}.name{font-size:12.5px}.price{font-size:17px}}
 .moscow-choice .tile{padding-right:32px;position:relative}.moscow-choice .tile:after{content:"";position:absolute;right:11px;top:15px;width:14px;height:14px;border:1px solid #b7afa4;border-radius:4px}.moscow-choice input:checked+.tile:after{content:"✓";background:#897862;color:white;border-color:#897862;text-align:center;font-size:12px;line-height:14px}.moscow-choice input:disabled+.tile{opacity:1;color:#a49f98;background:#f7f7f6;border-color:#eeece8}.moscow-choice input:disabled+.tile .meta{color:#aaa49d}
+
+.site-nav{position:sticky;top:0;z-index:4;background:rgba(248,247,244,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid #eae6e0;padding:10px 12px}.nav-inner{max-width:728px;margin:auto;display:flex;gap:5px;justify-content:center}.site-nav a{color:#827a70;text-decoration:none;font-size:12px;padding:11px 13px;border-radius:9px;white-space:nowrap}.site-nav a[aria-current="page"]{background:#eee8df;color:#302c27}.site-nav a:focus-visible,.faq-item summary:focus-visible{outline:2px solid #897862;outline-offset:3px}.page-intro{padding:15px 6px 20px}.page-intro h2{font-size:30px;font-weight:400;margin:10px 0}.page-intro p{font-size:13px;color:#898179;line-height:1.9}.empty-gallery{text-align:center;padding:55px 20px}.empty-gallery .gallery-mark{font:italic 34px Georgia,serif;color:#b5a38e;margin-bottom:23px}.empty-gallery h3{font-size:17px;font-weight:500}.empty-gallery p{font-size:12px;line-height:1.9;color:#898179}.page-link{display:inline-block;color:#5d5143;text-decoration:none;font-size:12px;padding:12px 17px;background:#f5f1e9;border-radius:9px;margin-top:15px}.faq-item{border-top:1px solid #ece8e2;padding:0 2px}.faq-item:first-of-type{border-top:0}.faq-item summary{cursor:pointer;font-size:13px;font-weight:500;line-height:1.8;padding:20px 0;list-style:none;display:flex;justify-content:space-between;gap:18px}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{content:'+';color:#9e8d78;font-size:18px}.faq-item[open] summary:after{content:'−'}.faq-item p{font-size:12px;color:#817970;line-height:2;margin:0 0 22px}.faq-intro{font-size:12px;color:#898179;line-height:1.9}.page-section{scroll-margin-top:78px}@media(max-width:380px){.site-nav a{font-size:11px;padding:10px}.page-intro h2{font-size:26px}}
 </style>
 </head>
 <body>
+<nav class="site-nav" aria-label="网站导航"><div class="nav-inner"><a href="#plan" aria-current="page">报价&amp;拍摄计划</a><a href="#gallery">客片展示</a><a href="#faq">Q&amp;A</a></div></nav>
 <main>
 <header><div class="brand">秋鸽 Studiooo_</div><p class="eyebrow">WEDDING PHOTOGRAPHY & FILMS</p><h1 class="hero">Made of Moments.</h1><p class="hint">为你们的故事，选择恰到好处的影像。</p></header>
+<div id="planPage" class="page-section">
 <div class="preview-warning" id="previewWarning" role="status"><strong>当前可能是静态文件预览</strong>如果切换城市后价格没有变化，说明此预览器未启用网页交互。请使用部署后的 HTTPS 网站在 Safari 或微信浏览器中打开；直接预览下载的 HTML 文件可能无法计算价格。</div>
 <noscript><div class="preview-warning">此网页的自动选配与价格计算需要 JavaScript。请在允许脚本运行的浏览器中访问正式网站。</div></noscript>
 <section class="panel" aria-labelledby="cityHeading"><div class="eyebrow">01 / DESTINATION</div><h2 id="cityHeading">拍摄城市</h2><div class="options"><label class="choice"><input type="radio" name="city" value="moscow"><span class="tile"><span class="name">莫斯科</span><span class="meta">MOSCOW</span></span></label><label class="choice"><input type="radio" name="city" value="spb" checked><span class="tile"><span class="name">圣彼得堡</span><span class="meta">SAINT PETERSBURG</span></span></label></div></section>
@@ -45,8 +49,23 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
 <p class="subheading">摄影师自由创作</p><label class="choice location-choice"><input type="checkbox" name="freestyle" value="yes"><span class="tile"><span class="name">让摄影师发现附近的惊喜 ✦</span><span class="meta">不局限于常规热门打卡地。摄影师可能根据当天的光线、天气及拍摄状态，带您探索附近的历史街巷、特色建筑或适合休息与拍摄的咖啡馆。不另收费，不占常规地点名额，不承诺增加景点，不延长约定拍摄时段。</span></span></label>
 <p id="remoteFreestyle" class="hint hidden">自由创作仅限武装力量大教堂场地区域内，不代表增加市区景点，也不延长约定拍摄时段。</p><label class="subheading" for="locationNote">地点备注（选填）</label><textarea id="locationNote" maxlength="500" rows="3" placeholder="喜欢的建筑、氛围或其他需求"></textarea><p class="hint">地点选择用于表达拍摄偏好，不代表逐一拍摄承诺。最终顺序与组合将结合场地规定、天气、光线、交通及新人状态由摄影师确认。</p></section>
 <section class="summary" id="quote" aria-live="polite"><div class="eyebrow">YOUR PERSONAL SELECTION</div><h2>你的专属拍摄方案</h2><div id="lines"><div class="line"><span>圣彼得堡 · A套餐（含妆造）</span><strong>¥8,988</strong></div></div><div class="total-label">预计总价 · 人民币参考金额</div><div class="total" id="total">¥8,988</div><div class="rub" id="rub">暂无需要折算的卢布项目</div><p class="hint" style="color:#c7beb4">参考汇率：1₽ = ¥0.08375（固定预算参考，非实时）。卢布费用按此参考汇率折算，仅供预算估计，最终按付款时双方确认的汇率结算。场地入场门票和未选择的额外服务另计。此报价为初步参考，档期、场地许可、额外门票及实际方案须由摄影师确认。</p><button type="button" class="action" id="copy">复制我的方案，发给摄影师 →</button></section>
-<footer class="foot">秋鸽 Studiooo_ · MOSCOW / SAINT PETERSBURG<br>具体拍摄路线、档期和场地许可，以双方最终确认的方案为准。<br>© 2026 秋鸽 Studiooo_</footer>
-<section id="manualCopy" class="panel hidden" aria-labelledby="manualCopyHeading"><h2 id="manualCopyHeading">手动复制方案</h2><p class="hint">浏览器未允许自动复制，请长按下方文字，选择全选并复制。</p><textarea id="manualQuote" rows="12" readonly></textarea><button type="button" class="action" id="closeManualCopy">关闭</button></section></main>
+<section id="manualCopy" class="panel hidden" aria-labelledby="manualCopyHeading"><h2 id="manualCopyHeading">手动复制方案</h2><p class="hint">浏览器未允许自动复制，请长按下方文字，选择全选并复制。</p><textarea id="manualQuote" rows="12" readonly></textarea><button type="button" class="action" id="closeManualCopy">关闭</button></section>
+</div>
+<section id="galleryPage" class="page-section hidden" aria-labelledby="galleryHeading" hidden>
+<div class="page-intro"><div class="eyebrow">REAL STORIES / SELECTED WORK</div><h2 id="galleryHeading" tabindex="-1">客片展示</h2><p>在莫斯科与圣彼得堡，记录属于你们的真实瞬间。</p></div>
+<div class="panel empty-gallery"><div class="gallery-mark">Stories, together.</div><h3>精选客片整理中</h3><p>这里将收录我们的真实客片与拍摄故事。<br>小红书精选笔记即将陆续加入。</p><a class="page-link" href="#plan">先看看适合你们的拍摄方案 →</a></div>
+</section>
+<section id="faqPage" class="page-section hidden" aria-labelledby="faqHeading" hidden>
+<div class="page-intro"><div class="eyebrow">BEFORE YOUR SESSION</div><h2 id="faqHeading" tabindex="-1">Q&amp;A</h2><p>把常见问题说清楚，让拍摄前的准备更轻松。</p></div>
+<div class="panel">
+<details class="faq-item" open><summary>选片结束后，多久可以拿到精修照片？</summary><p>选片结束后，7–15 个工作日交付精修照片。</p></details>
+<details class="faq-item"><summary>摄影套餐包含妆造和跟妆吗？</summary><p>两座城市的 A套餐与 B套餐均包含摄影、新娘妆造与跟妆，以及新郎基础妆造。圣彼得堡套餐包含常规团队差旅。</p></details>
+<details class="faq-item"><summary>勾选的地点都会逐一拍摄吗？</summary><p>所选地点为拍摄意向。实际路线会结合天气、自然光线、交通、场地开放情况及你们当天的状态，由摄影师协调安排。我们更重视每一组作品的完整性，而非景点数量。</p></details>
+<details class="faq-item"><summary>选择「摄影师自由创作」需要额外付费吗？</summary><p>不额外收费，也不占普通地点名额。摄影师会根据当天情况在附近灵活创作；此选项不承诺增加景点，也不延长约定拍摄时段。</p></details>
+<details class="faq-item"><summary>卢布费用显示的人民币金额，如何结算？</summary><p>人民币金额仅供预算参考，实际结算汇率以确认时为准。场地门票及其他未选择的额外服务另计，具体费用与方案由双方最终确认。</p></details>
+</div><p class="faq-intro">约拍、付款与交付的更多问题，将陆续补充。</p><a class="page-link" href="#plan">查看报价&amp;拍摄计划 →</a>
+</section>
+<footer class="foot">秋鸽 Studiooo_ · MOSCOW / SAINT PETERSBURG<br>具体拍摄路线、档期和场地许可，以双方最终确认的方案为准。<br>© 2026 秋鸽 Studiooo_</footer></main>
 <div class="sticky" id="sticky"><div class="sticky-in"><div><div class="sticky-label">专属方案 · 参考总价</div><div class="sticky-total" id="stickyTotal">¥8,988</div></div><button class="sticky-button" type="button" id="goQuote">查看报价明细 ↑</button></div></div>
 <script>
 (function(){
@@ -196,6 +215,22 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
   e('goQuote').addEventListener('click',function(){e('quote').scrollIntoView({behavior:'smooth',block:'start'})});
   show('previewWarning',false);
   update();
+})();
+</script>
+
+<script>
+(function(){
+  'use strict';
+  var pages={plan:document.getElementById('planPage'),gallery:document.getElementById('galleryPage'),faq:document.getElementById('faqPage')};
+  function navigate(focus){
+    var key=location.hash.slice(1);if(!pages[key])key='plan';
+    Object.keys(pages).forEach(function(name){pages[name].hidden=name!==key;pages[name].classList.toggle('hidden',name!==key)});
+    document.querySelectorAll('.site-nav a').forEach(function(link){if(link.hash==='#'+key)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current')});
+    document.getElementById('sticky').classList.toggle('hidden',key!=='plan');
+    document.title='秋鸽 Studiooo_｜'+({plan:'报价&拍摄计划',gallery:'客片展示',faq:'Q&A'}[key]);
+    if(focus){window.scrollTo(0,0);var heading=document.getElementById(key==='gallery'?'galleryHeading':key==='faq'?'faqHeading':'cityHeading');heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true})}
+  }
+  window.addEventListener('hashchange',function(){navigate(true)});navigate(false);
 })();
 </script>
 </body>
