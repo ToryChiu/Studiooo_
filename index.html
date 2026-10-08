@@ -119,7 +119,7 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
     if(ok){copyDone(button)}else{show('manualCopy',true);e('manualQuote').value=text;e('manualCopy').scrollIntoView({block:'center'});e('manualQuote').focus();e('manualQuote').select();e('manualQuote').setSelectionRange(0,text.length)}
   }
   function copyDone(button){button.textContent='已复制，可粘贴发送给摄影师';setTimeout(function(){button.textContent='复制我的方案，发给摄影师 →'},2300)}
-  function copyQuote(){var button=e('copy'),text=button.getAttribute('data-text')||'';if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){copyDone(button)},function(){fallbackCopy(text,button)})}else fallbackCopy(text,button)}
+  function copyQuote(){var button=e('copy'),text=button.getAttribute('data-text')||'';if(navigator.clipboard&&navigator.clipboard.writeText){var settled=false;var timer=setTimeout(function(){if(!settled){settled=true;fallbackCopy(text,button)}},1500);try{navigator.clipboard.writeText(text).then(function(){if(!settled){settled=true;clearTimeout(timer);copyDone(button)}},function(){if(!settled){settled=true;clearTimeout(timer);fallbackCopy(text,button)}})}catch(err){settled=true;clearTimeout(timer);fallbackCopy(text,button)}}else fallbackCopy(text,button)}
   Array.prototype.forEach.call(document.querySelectorAll('input'),function(input){input.addEventListener('change',function(){statusNote='';update()})});
   e('closeManualCopy').addEventListener('click',function(){show('manualCopy',false)});
   e('locationNote').addEventListener('input',update);
