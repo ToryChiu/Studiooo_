@@ -8,7 +8,7 @@ function pick(name,value){const input=d.querySelector(`input[name="${name}"][val
 function total(){return Number(d.getElementById('total').textContent.replace(/[^0-9]/g,''))}
 function quote(){return d.getElementById('copy').getAttribute('data-text')}
 function discounted(){assert.equal(d.querySelector('input[name="makeup"]:checked').value,'self');assert.equal((d.getElementById('lines').textContent.match(/自备妆造优惠/g)||[]).length,1);assert.equal((quote().match(/自备妆造优惠：−¥1,000/g)||[]).length,1);assert(!quote().includes('含新娘妆造'))}
-assert.equal(d.querySelector('input[name="makeup"]:checked').value,'included');assert.equal(total(),8988);
+assert.equal(d.querySelector('input[name="makeup"]:checked').value,'included');assert.equal(total(),6988);
 const bases={moscow:{A:6988,B:8988},spb:{A:8988,B:10988}},videos={none:0,short:1800,ceremony:2500};let count=0;
 for(const city of ['moscow','spb'])for(const pkg of ['A','B'])for(const makeup of ['included','self'])for(const film of ['none','short','ceremony'])for(const ceremony of ['no','yes'])for(const main of (city==='spb'?['none','hermitage','vladimir']:['none'])){
  pick('city',city);pick('pkg',pkg);pick('makeup',makeup);pick('film',film);pick('ceremony',ceremony);pick('mainplace',main);
@@ -26,6 +26,6 @@ const routeBefore=Array.from(d.querySelectorAll('input[name="moscowPlace"]')).ma
 pick('makeup','self');discounted();assert.equal(total(),7988);assert.deepEqual(Array.from(d.querySelectorAll('input[name="moscowPlace"]')).map(x=>[x.value,x.checked,x.disabled]),routeBefore);
 pick('makeup','included');assert.equal(total(),8988);assert(d.getElementById('selfMakeupNotice').classList.contains('hidden'));assert(!d.getElementById('lines').textContent.includes('自备妆造优惠'));
 pick('makeup','self');d.getElementById('copy').click();assert.equal(clipboard,quote());
-d.getElementById('resetPlan').click();assert.equal(total(),8988);assert.equal(d.querySelector('input[name="makeup"]:checked').value,'included');assert.equal(d.querySelector('input[name="city"]:checked').value,'spb');assert.equal(d.querySelectorAll('input[name="moscowPlace"]:checked').length,0);
-const refreshed=page();assert.equal(refreshed.window.document.querySelector('input[name="makeup"]:checked').value,'included');assert.equal(refreshed.window.document.getElementById('total').textContent,'¥8,988');
+d.getElementById('resetPlan').click();assert.equal(total(),6988);assert.equal(d.querySelector('input[name="makeup"]:checked').value,'included');assert.equal(d.querySelector('input[name="city"]:checked').value,'moscow');assert.equal(d.querySelectorAll('input[name="moscowPlace"]:checked').length,0);
+const refreshed=page();assert.equal(refreshed.window.document.querySelector('input[name="makeup"]:checked').value,'included');assert.equal(refreshed.window.document.getElementById('total').textContent,'¥6,988');
 assert.deepEqual(errors,[]);dom.window.close();refreshed.window.close();console.log(`PASS ${count} quote combinations, route isolation, reset, refresh, clipboard and no runtime errors`);
