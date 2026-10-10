@@ -6,7 +6,7 @@
  var system=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;
  var reduced=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):null;
  var preference='';try{preference=localStorage.getItem('studio-theme')||''}catch(error){}
- function applyTheme(theme){root.dataset.theme=theme;button.textContent=theme==='dark'?'☀':'☾';button.setAttribute('aria-label',theme==='dark'?'切换亮色模式':'切换暗色模式');button.setAttribute('aria-pressed',String(theme==='dark'));document.querySelector('meta[name="theme-color"]').content=theme==='dark'?'#171817':'#f8f7f4'}
+ function applyTheme(theme){root.dataset.theme=theme;button.setAttribute('aria-label',theme==='dark'?'切换亮色模式':'切换暗色模式');button.setAttribute('aria-pressed',String(theme==='dark'));document.querySelector('meta[name="theme-color"]').content=theme==='dark'?'#171817':'#f8f7f4'}
  button.addEventListener('click',function(){preference=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('studio-theme',preference)}catch(error){}applyTheme(preference)});
  if(system&&system.addEventListener)system.addEventListener('change',function(e){if(!preference)applyTheme(e.matches?'dark':'light')});
  applyTheme(preference==='dark'||preference==='light'?preference:system&&system.matches?'dark':'light');
