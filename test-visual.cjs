@@ -34,7 +34,9 @@ for(const [saved,system,expected] of [[null,false,'light'],[null,true,'dark'],['
  p.d.querySelector('input[name="makeup"][value="self"]').click();assert.equal(p.d.getElementById('total').textContent,'¥5,988');
  for(const key of ['gallery','faq','plan','gallery','plan']){
   p.w.location.hash='#'+key;p.w.dispatchEvent(new p.w.HashChangeEvent('hashchange'));p.flush();
-  assert.equal(p.d.querySelectorAll('#sectionLinks button').length,key==='gallery'?3:key==='faq'?6:7);
+  assert.equal(p.d.querySelectorAll('#sectionLinks button').length,key==='gallery'?3:key==='faq'?0:7);
+  assert.equal(p.d.querySelector('.line-sidebar').hidden,key==='faq');assert.equal(p.d.getElementById('scrollLabel').hidden,key==='faq');
+  if(key==='faq'){assert.equal(p.d.getElementById('faqHeading').textContent,'Your questions,answered.');assert.equal(p.d.querySelector('.page-tabs a[href="#faq"]').textContent,'FAQ');assert.equal(p.d.title,'秋鸽 Studiooo_｜FAQ');assert.equal(p.d.querySelectorAll('#faqPage .faq-toggle').length,5);assert.equal(p.d.querySelectorAll('#faqPage .faq-answer').length,5)}
   assert.equal(p.d.getElementById(key+'Page').hidden,false);assert(p.d.getElementById(key+'Page').classList.contains('is-entering'));
   assert.equal(p.d.getElementById('total').textContent,'¥5,988');
   assert(p.d.getElementById(key+'Page').querySelectorAll('.reveal-item.is-visible').length>0);

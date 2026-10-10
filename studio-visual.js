@@ -88,7 +88,7 @@
   var page=location.hash==='#gallery'?'gallery':location.hash==='#faq'?'faq':'plan',targets=[];
   if(page==='plan')targets=[['城市','cityHeading'],['套餐','photoHeading'],['妆造','makeupHeading'],['视频','videoHeading'],['仪式','ceremonyHeading'],['地点','locationHeading'],['报价','quote']].map(function(x){var el=document.getElementById(x[1]);return {label:x[0],target:x[1]==='quote'?el:el.closest('section')}});
   else if(page==='gallery')targets=[{label:'概览',target:document.getElementById('galleryPage')},{label:'筛选',target:document.getElementById('gallerySearch')},{label:'客片',target:document.getElementById('galleryGrid')}];
-  else {targets=[{label:'问答',target:document.getElementById('faqPage')}];document.querySelectorAll('#faqPage .faq-item').forEach(function(el,i){targets.push({label:['交付','妆造','地点','创作','费用'][i]||'问题',target:el})})}
+  list.parentElement.hidden=page==='faq';indicator.hidden=page==='faq';
   list.replaceChildren();chapters=[];targets.forEach(function(c,i){if(!c.target)return;var li=document.createElement('li'),b=document.createElement('button'),index=document.createElement('span');b.type='button';index.className='line-index';index.setAttribute('aria-hidden','true');index.textContent=String(i+1).padStart(2,'0');b.appendChild(index);b.appendChild(document.createTextNode(c.label));b.addEventListener('click',function(){c.target.scrollIntoView({behavior:reduced&&reduced.matches?'auto':'smooth',block:'start'});setActive(i)});li.appendChild(b);list.appendChild(li);c.button=b;chapters.push(c)});track();
  }
  window.addEventListener('scroll',function(){if(scrollFrame===null)scrollFrame=requestAnimationFrame(track)},{passive:true});window.addEventListener('resize',track,{passive:true});window.addEventListener('hashchange',rebuild);rebuild();

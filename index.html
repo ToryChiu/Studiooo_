@@ -28,13 +28,13 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
 
 .recommend{font-size:10px;font-weight:400;color:#8a7760;background:#f3ede3;border-radius:5px;padding:3px 6px;margin-left:5px;white-space:nowrap}.reset-button{display:block;margin:15px auto 0;border:0;background:transparent;color:#cec4b7;font:inherit;font-size:11px;padding:8px 16px;cursor:pointer}.reset-button:focus-visible{outline:2px solid #cec4b7;outline-offset:2px}
 </style>
-<link rel="stylesheet" href="studio-visual.css?v=local-dappled-1">
+<link rel="stylesheet" href="studio-visual.css?v=local-faq-reference-1">
 <script>try{var savedTheme=localStorage.getItem("studio-theme");document.documentElement.dataset.theme=savedTheme==="dark"||savedTheme==="light"?savedTheme:window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}catch(e){}</script>
 </head>
 <body>
 <div class="studio-dappled-stage" aria-hidden="true"><div class="dappled-sunlight"></div><svg id="dappledLeaves" viewBox="0 0 1200 1000" preserveAspectRatio="xMaxYMin slice"></svg></div>
 <div class="studio-neon-stage" aria-hidden="true"><div class="studio-neon-spill"></div><div class="studio-neon-tube"></div></div>
-<nav class="site-nav" aria-label="网站导航"><div class="nav-inner"><div class="page-tabs"><span class="tab-indicator" aria-hidden="true"></span><a href="#plan" aria-current="page">报价&amp;拍摄计划</a><a href="#gallery">客片展示</a><a href="#faq">Q&amp;A</a></div><button type="button" class="theme-toggle" id="themeToggle" aria-label="切换暗色模式" aria-pressed="false">☾</button></div></nav>
+<nav class="site-nav" aria-label="网站导航"><div class="nav-inner"><div class="page-tabs"><span class="tab-indicator" aria-hidden="true"></span><a href="#plan" aria-current="page">报价&amp;拍摄计划</a><a href="#gallery">客片展示</a><a href="#faq">FAQ</a></div><button type="button" class="theme-toggle" id="themeToggle" aria-label="切换暗色模式" aria-pressed="false">☾</button></div></nav>
 <nav class="line-sidebar" aria-label="当前页面章节"><ul id="sectionLinks"></ul></nav><div class="scroll-label" id="scrollLabel" aria-hidden="true">城市</div>
 <main>
 <header><div class="brand">秋鸽 Studiooo_</div><p class="eyebrow">WEDDING PHOTOGRAPHY & FILMS</p><h1 class="hero">Made of Moments.</h1><p class="hint">为你们的故事，选择恰到好处的影像。</p></header>
@@ -73,14 +73,15 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
 <p class="gallery-result" id="galleryResult" role="status" aria-live="polite"></p><div class="gallery-grid" id="galleryGrid"></div><div id="galleryEmpty" class="gallery-empty hidden">当前收录的笔记标题未匹配这个关键词。<br>完整合集可能包含更多相关作品。</div>
 </section>
 <section id="faqPage" class="page-section hidden" aria-labelledby="faqHeading" hidden>
-<div class="page-intro"><div class="eyebrow">BEFORE YOUR SESSION</div><h2 id="faqHeading" tabindex="-1">Q&amp;A</h2><p>把常见问题说清楚，让拍摄前的准备更轻松。</p></div>
-<div class="panel">
-<details class="faq-item" open><summary>选片结束后，多久可以拿到精修照片？</summary><p>选片结束后，7–15 个工作日交付精修照片。</p></details>
-<details class="faq-item"><summary>摄影套餐包含妆造和跟妆吗？</summary><p>两座城市的 A套餐与 B套餐默认包含摄影、新娘妆造与跟妆，以及新郎基础妆造。也可选择自备妆造，享受 ¥1,000 套餐优惠；此时不包含专业跟妆、补妆、发型维护及婚纱服饰整理服务。摄影时长和精修数量不变。圣彼得堡套餐包含常规团队差旅。</p></details>
-<details class="faq-item"><summary>勾选的地点都会逐一拍摄吗？</summary><p>所选地点为拍摄意向。实际路线会结合天气、自然光线、交通、场地开放情况及你们当天的状态，由摄影师协调安排。我们更重视每一组作品的完整性，而非景点数量。</p></details>
-<details class="faq-item"><summary>选择「摄影师自由创作」需要额外付费吗？</summary><p>不额外收费，也不占普通地点名额。摄影师会根据当天情况在附近灵活创作；此选项不承诺增加景点，也不延长约定拍摄时段。</p></details>
-<details class="faq-item"><summary>卢布费用显示的人民币金额，如何结算？</summary><p>人民币金额仅供预算参考，实际结算汇率以确认时为准。场地门票及其他未选择的额外服务另计，具体费用与方案由双方最终确认。</p></details>
-</div><p class="faq-intro">约拍、付款与交付的更多问题，将陆续补充。</p><a class="page-link" href="#plan">查看报价&amp;拍摄计划 →</a>
+<div class="faq-layout">
+<div class="page-intro"><div class="eyebrow">FAQ</div><h2 id="faqHeading" tabindex="-1" lang="en">Your questions,<br>answered.</h2><p>把常见问题说清楚，让拍摄前的准备更轻松。</p><div class="faq-followup"><p class="faq-intro">约拍、付款与交付的更多问题，将陆续补充。</p><a class="page-link" href="#plan">查看报价&amp;拍摄计划 →</a></div></div>
+<div class="faq-list">
+<details class="faq-item" open><summary><span class="faq-number" aria-hidden="true">Q1</span><span class="faq-question">选片结束后，多久可以拿到精修照片？</span><span class="faq-toggle" aria-hidden="true"></span></summary><div class="faq-answer"><p>选片结束后，7–15 个工作日交付精修照片。</p></div></details>
+<details class="faq-item"><summary><span class="faq-number" aria-hidden="true">Q2</span><span class="faq-question">摄影套餐包含妆造和跟妆吗？</span><span class="faq-toggle" aria-hidden="true"></span></summary><div class="faq-answer"><p>两座城市的 A套餐与 B套餐默认包含摄影、新娘妆造与跟妆，以及新郎基础妆造。也可选择自备妆造，享受 ¥1,000 套餐优惠；此时不包含专业跟妆、补妆、发型维护及婚纱服饰整理服务。摄影时长和精修数量不变。圣彼得堡套餐包含常规团队差旅。</p></div></details>
+<details class="faq-item"><summary><span class="faq-number" aria-hidden="true">Q3</span><span class="faq-question">勾选的地点都会逐一拍摄吗？</span><span class="faq-toggle" aria-hidden="true"></span></summary><div class="faq-answer"><p>所选地点为拍摄意向。实际路线会结合天气、自然光线、交通、场地开放情况及你们当天的状态，由摄影师协调安排。我们更重视每一组作品的完整性，而非景点数量。</p></div></details>
+<details class="faq-item"><summary><span class="faq-number" aria-hidden="true">Q4</span><span class="faq-question">选择「摄影师自由创作」需要额外付费吗？</span><span class="faq-toggle" aria-hidden="true"></span></summary><div class="faq-answer"><p>不额外收费，也不占普通地点名额。摄影师会根据当天情况在附近灵活创作；此选项不承诺增加景点，也不延长约定拍摄时段。</p></div></details>
+<details class="faq-item"><summary><span class="faq-number" aria-hidden="true">Q5</span><span class="faq-question">卢布费用显示的人民币金额，如何结算？</span><span class="faq-toggle" aria-hidden="true"></span></summary><div class="faq-answer"><p>人民币金额仅供预算参考，实际结算汇率以确认时为准。场地门票及其他未选择的额外服务另计，具体费用与方案由双方最终确认。</p></div></details>
+</div></div>
 </section>
 <footer class="foot">秋鸽 Studiooo_ · MOSCOW / SAINT PETERSBURG<br>具体拍摄路线、档期和场地许可，以双方最终确认的方案为准。<br>© 2026 秋鸽 Studiooo_</footer></main>
 <div class="sticky" id="sticky"><div class="sticky-in"><div><div class="sticky-label">专属方案 · 参考总价</div><div class="sticky-total"><span id="stickyTotal">¥6,988</span><span id="stickyRolling" aria-hidden="true"></span></div></div><button class="sticky-button" type="button" id="goQuote">查看报价明细 ↑</button></div></div>
@@ -257,7 +258,7 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
     Object.keys(pages).forEach(function(name){pages[name].hidden=name!==key;pages[name].classList.toggle('hidden',name!==key)});
     document.querySelectorAll('.site-nav .page-tabs a').forEach(function(link){if(link.hash==='#'+key)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current')});
     document.getElementById('sticky').classList.toggle('hidden',key!=='plan');
-    document.title='秋鸽 Studiooo_｜'+({plan:'报价&拍摄计划',gallery:'客片展示',faq:'Q&A'}[key]);
+    document.title='秋鸽 Studiooo_｜'+({plan:'报价&拍摄计划',gallery:'客片展示',faq:'FAQ'}[key]);
     document.dispatchEvent(new CustomEvent('studio:page',{detail:{key:key}}));
     if(focus){window.scrollTo(0,0);var heading=document.getElementById(key==='gallery'?'galleryHeading':key==='faq'?'faqHeading':'cityHeading');heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true})}
   }
@@ -307,6 +308,6 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
  search.addEventListener('input',updateGallery);updateGallery();
 })();
 </script>
-<script src="studio-visual.js?v=local-dappled-1"></script>
+<script src="studio-visual.js?v=local-faq-reference-1"></script>
 </body>
 </html>
