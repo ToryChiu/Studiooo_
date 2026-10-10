@@ -1,6 +1,6 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
 const html=fs.readFileSync(__dirname+'/index.html','utf8');
-const script=html.match(/<script>([\s\S]*?)<\/script>/)[1];
+const script=Array.from(html.matchAll(/<script>([\s\S]*?)<\/script>/g)).map(x=>x[1]).find(x=>x.includes('var MOSCOW_PLACES='));
 new vm.Script(script);
 const model=script.slice(script.indexOf('var MOSCOW_PLACES='),script.indexOf('var cityMemory='));
 const ctx={};vm.createContext(ctx);vm.runInContext(model,ctx);

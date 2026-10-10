@@ -1,6 +1,6 @@
 {
   "name": "studiooo-quote-regression",
   "private": true,
-  "scripts": {"test": "node test-makeup.cjs && node test-routes.cjs"},
+  "scripts": {"test": "node test-makeup.cjs && node test-routes.cjs && node test-visual.cjs"},
   "devDependencies": {"jsdom": "30.1.2"}
 }

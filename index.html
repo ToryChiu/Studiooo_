@@ -28,9 +28,12 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
 
 .recommend{font-size:10px;font-weight:400;color:#8a7760;background:#f3ede3;border-radius:5px;padding:3px 6px;margin-left:5px;white-space:nowrap}.reset-button{display:block;margin:15px auto 0;border:0;background:transparent;color:#cec4b7;font:inherit;font-size:11px;padding:8px 16px;cursor:pointer}.reset-button:focus-visible{outline:2px solid #cec4b7;outline-offset:2px}
 </style>
+<link rel="stylesheet" href="studio-visual.css">
+<script>try{var savedTheme=localStorage.getItem("studio-theme");document.documentElement.dataset.theme=savedTheme==="dark"||savedTheme==="light"?savedTheme:window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}catch(e){}</script>
 </head>
 <body>
-<nav class="site-nav" aria-label="网站导航"><div class="nav-inner"><a href="#plan" aria-current="page">报价&amp;拍摄计划</a><a href="#gallery">客片展示</a><a href="#faq">Q&amp;A</a></div></nav>
+<div class="dot-field" aria-hidden="true"><canvas id="dotCanvas"></canvas></div>
+<nav class="site-nav" aria-label="网站导航"><div class="nav-inner"><a href="#plan" aria-current="page">报价</a><a href="#gallery">客片</a><a href="#faq">问答</a><div class="line-sidebar"><ul><li><a href="#plan" aria-current="page"><span class="line-index" aria-hidden="true">01</span>报价</a></li><li><a href="#gallery"><span class="line-index" aria-hidden="true">02</span>客片</a></li><li><a href="#faq"><span class="line-index" aria-hidden="true">03</span>问答</a></li></ul></div><button type="button" class="theme-toggle" id="themeToggle" aria-label="切换暗色模式" aria-pressed="false">☾</button></div></nav>
 <main>
 <header><div class="brand">秋鸽 Studiooo_</div><p class="eyebrow">WEDDING PHOTOGRAPHY & FILMS</p><h1 class="hero">Made of Moments.</h1><p class="hint">为你们的故事，选择恰到好处的影像。</p></header>
 <div id="planPage" class="page-section">
@@ -300,5 +303,6 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
  search.addEventListener('input',updateGallery);updateGallery();
 })();
 </script>
+<script src="studio-visual.js"></script>
 </body>
 </html>
