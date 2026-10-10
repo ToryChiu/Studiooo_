@@ -1,39 +1,85 @@
-/* GradientWaves shader adapted from the user-provided React Bits source.
-   Native WebGL2 keeps this static site independent of React/remote runtimes.
-   Pointer parallax is explicitly disabled. */
+/* Local visual draft. Original neon and leaf-shadow prototypes.
+   Official React Bits Pro components require a license and are not installed. */
 (function(){
  'use strict';
  var root=document.documentElement,button=document.getElementById('themeToggle');
  var system=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;
  var reduced=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):null;
  var preference='';try{preference=localStorage.getItem('studio-theme')||''}catch(error){}
- var canvas=document.getElementById('waveCanvas'),gl=null,program=null,uniforms={},raf=null,last=0,lost=false;
- var vertex="#version 300 es\nin vec2 position;\nvoid main() {\n  gl_Position = vec4(position, 0.0, 1.0);\n}\n",fragment="#version 300 es\nprecision highp float;\nuniform vec2 iResolution;\nuniform float iTime;\nuniform float uSpeed;\nuniform float uAmplitude;\nuniform float uWaveScale;\nuniform float uWaveRatio;\nuniform float uSwell;\nuniform float uTurbulence;\nuniform float uTilt;\nuniform float uZoom;\nuniform float uHeight;\nuniform float uFogDepth;\nuniform float uSteps;\nuniform float uBrightness;\nuniform float uOpacity;\nuniform float uGrain;\nuniform float uGrainIntensity;\nuniform vec2 uMouse;\nuniform float uParallax;\nuniform bool uEnableMouse;\nuniform vec3 uHorizonColor;\nuniform vec3 uWaveColor;\nuniform vec3 uCrestColor;\nout vec4 fragColor;\n\nconst float MAX_DIST = 20000.0;\n\nfloat hash21(vec2 p) {\n  vec3 p3 = fract(vec3(p.xyx) * 0.1031);\n  p3 += dot(p3, p3.yzx + 33.33);\n  return fract((p3.x + p3.y) * p3.z);\n}\n\nfloat plasma(vec3 r, vec2 freq, vec4 tc) {\n  float mx = r.x + tc.x;\n  mx += uSwell * sin((r.y + mx) / 20.0 + tc.y);\n  float my = r.y - tc.z;\n  my += uTurbulence * cos(r.x / 23.0 + tc.w);\n  return r.z - (sin(mx * freq.x) * uAmplitude + sin(my * freq.y) * uAmplitude + uHeight);\n}\n\nfloat raymarch(vec3 pos, vec3 dir, vec2 freq, vec4 tc) {\n  float dist = 0.0;\n  for (int i = 0; i < 128; i++) {\n    if (float(i) >= uSteps) break;\n    float dscene = plasma(pos + dist * dir, freq, tc);\n    if (abs(dscene) < 0.1) break;\n    dist += 0.9 * dscene;\n    if (!(abs(dist) < MAX_DIST)) return MAX_DIST;\n  }\n  return dist;\n}\n\nvoid main() {\n  float T = iTime * uSpeed;\n  vec2 freq = vec2(uWaveScale / 7.0, (uWaveScale * uWaveRatio) / 3.0);\n  vec4 tc = vec4(T / 0.130, T / 0.810, T / 0.200, T / 0.710);\n  float c, s;\n  float vfov = (3.14159 / 2.3) / max(uZoom, 0.05);\n  vec3 cam = vec3(0.0, 0.0, 30.0);\n  vec2 uv = (gl_FragCoord.xy / iResolution.xy) - 0.5;\n  uv.x *= iResolution.x / iResolution.y;\n  uv.y *= -1.0;\n\n  vec3 dir = vec3(0.0, 0.0, -1.0);\n  float ulen = length(uv);\n  float xrot = vfov * ulen;\n  c = cos(xrot); s = sin(xrot);\n  dir = mat3(1.0, 0.0, 0.0, 0.0, c, -s, 0.0, s, c) * dir;\n  vec2 nuv = ulen > 1e-5 ? uv / ulen : vec2(1.0, 0.0);\n  c = nuv.x; s = nuv.y;\n  dir = mat3(c, -s, 0.0, s, c, 0.0, 0.0, 0.0, 1.0) * dir;\n  c = cos(uTilt); s = sin(uTilt);\n  dir = mat3(c, 0.0, s, 0.0, 1.0, 0.0, -s, 0.0, c) * dir;\n\n  if (uEnableMouse) {\n    float yaw = (uMouse.x - 0.5) * uParallax * 0.4;\n    float pitch = (uMouse.y - 0.5) * uParallax * 0.4;\n    c = cos(yaw); s = sin(yaw);\n    dir = mat3(c, 0.0, s, 0.0, 1.0, 0.0, -s, 0.0, c) * dir;\n    c = cos(pitch); s = sin(pitch);\n    dir = mat3(1.0, 0.0, 0.0, 0.0, c, -s, 0.0, s, c) * dir;\n  }\n\n  float dist = raymarch(cam, dir, freq, tc);\n  vec3 pos = cam + dist * dir;\n\n  float t = clamp(uFogDepth / max(dist, 0.001), 0.0, 1.0);\n  vec3 body = mix(uWaveColor, uCrestColor, clamp(pos.z * 0.08 + 0.5, 0.0, 1.0));\n  vec3 col = mix(uHorizonColor, body, t);\n  col *= uBrightness;\n  col = clamp(col, 0.0, 1.0);\n\n  float alpha = clamp(t, 0.0, 1.0) * uOpacity;\n  if (uGrain > 0.5) {\n    float g = hash21(gl_FragCoord.xy + mod(iTime, 64.0) * 11.0);\n    alpha += (g - 0.5) * uGrainIntensity;\n  }\n  alpha = clamp(alpha, 0.0, 1.0);\n  fragColor = vec4(col * alpha, alpha);\n}\n";
- function rgb(hex){return [parseInt(hex.slice(1,3),16)/255,parseInt(hex.slice(3,5),16)/255,parseInt(hex.slice(5,7),16)/255]}
- function shader(type,source){var s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){gl.deleteShader(s);throw Error('Wave shader unavailable')}return s}
- function setup(){
-  canvas.dataset.renderer='gradient';
-  if(typeof window.WebGL2RenderingContext==='undefined')return;
-  try{
-   gl=canvas.getContext('webgl2',{alpha:true,premultipliedAlpha:true,antialias:false,depth:false,powerPreference:'low-power'});if(!gl)return;
-   var vs=shader(gl.VERTEX_SHADER,vertex),fs=shader(gl.FRAGMENT_SHADER,fragment);program=gl.createProgram();gl.attachShader(program,vs);gl.attachShader(program,fs);gl.linkProgram(program);gl.deleteShader(vs);gl.deleteShader(fs);
-   if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error('Wave renderer unavailable');gl.useProgram(program);
-   var buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);var position=gl.getAttribLocation(program,'position');gl.enableVertexAttribArray(position);gl.vertexAttribPointer(position,2,gl.FLOAT,false,0,0);
-   uniforms={};['iResolution','iTime','uSpeed','uAmplitude','uWaveScale','uWaveRatio','uSwell','uTurbulence','uTilt','uZoom','uHeight','uFogDepth','uSteps','uBrightness','uOpacity','uGrain','uGrainIntensity','uMouse','uParallax','uEnableMouse','uHorizonColor','uWaveColor','uCrestColor'].forEach(function(key){uniforms[key]=gl.getUniformLocation(program,key)});
-   var values={uSpeed:.24,uAmplitude:1.3,uWaveScale:.55,uWaveRatio:.8,uSwell:35,uTurbulence:11,uTilt:.9,uZoom:1.05,uHeight:3.2,uFogDepth:14,uSteps:window.innerWidth<700?40:70,uBrightness:1,uOpacity:.85,uGrain:1,uGrainIntensity:.015,uParallax:0};Object.keys(values).forEach(function(key){gl.uniform1f(uniforms[key],values[key])});gl.uniform1i(uniforms.uEnableMouse,0);gl.uniform2f(uniforms.uMouse,.5,.5);lost=false;canvas.parentElement.classList.add('webgl-ready');canvas.dataset.renderer='webgl2';
-  }catch(error){gl=null;canvas.dataset.renderer='gradient';canvas.parentElement.classList.remove('webgl-ready')}
- }
- function paint(time){if(!gl||lost)return;gl.useProgram(program);var colors=getComputedStyle(root);[['uHorizonColor','--horizon'],['uWaveColor','--wave'],['uCrestColor','--crest']].forEach(function(pair){gl.uniform3fv(uniforms[pair[0]],rgb(colors.getPropertyValue(pair[1]).trim()))});gl.uniform1f(uniforms.iTime,time*.001);gl.drawArrays(gl.TRIANGLES,0,3)}
- function resize(){if(!gl||lost)return;var scale=window.innerWidth<700?.6:.8;canvas.width=Math.max(1,Math.round(window.innerWidth*scale));canvas.height=Math.max(1,Math.round(window.innerHeight*scale));gl.viewport(0,0,canvas.width,canvas.height);gl.uniform2f(uniforms.iResolution,canvas.width,canvas.height);gl.uniform1f(uniforms.uSteps,window.innerWidth<700?40:70);paint(performance.now())}
- function frame(now){raf=null;if(document.hidden||lost||reduced&&reduced.matches)return;if(now-last>32){paint(now);last=now}raf=requestAnimationFrame(frame)}
- function start(){if(raf!==null)cancelAnimationFrame(raf);raf=null;if(!gl||lost)return;if(document.hidden||reduced&&reduced.matches){paint(0);return}raf=requestAnimationFrame(frame)}
- function applyTheme(theme){root.dataset.theme=theme;button.textContent=theme==='dark'?'☀':'☾';button.setAttribute('aria-label',theme==='dark'?'切换亮色模式':'切换暗色模式');button.setAttribute('aria-pressed',String(theme==='dark'));document.querySelector('meta[name="theme-color"]').content=theme==='dark'?'#171817':'#f8f7f4';paint(performance.now())}
+ function applyTheme(theme){root.dataset.theme=theme;button.textContent=theme==='dark'?'☀':'☾';button.setAttribute('aria-label',theme==='dark'?'切换亮色模式':'切换暗色模式');button.setAttribute('aria-pressed',String(theme==='dark'));document.querySelector('meta[name="theme-color"]').content=theme==='dark'?'#171817':'#f8f7f4'}
  button.addEventListener('click',function(){preference=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('studio-theme',preference)}catch(error){}applyTheme(preference)});
  if(system&&system.addEventListener)system.addEventListener('change',function(e){if(!preference)applyTheme(e.matches?'dark':'light')});
- window.addEventListener('resize',resize,{passive:true});document.addEventListener('visibilitychange',start);
- canvas.addEventListener('webglcontextlost',function(e){e.preventDefault();lost=true;start();canvas.parentElement.classList.remove('webgl-ready')});canvas.addEventListener('webglcontextrestored',function(){setup();resize();start()});
- if(reduced&&reduced.addEventListener)reduced.addEventListener('change',start);
- setup();resize();applyTheme(preference==='dark'||preference==='light'?preference:system&&system.matches?'dark':'light');start();
+ applyTheme(preference==='dark'||preference==='light'?preference:system&&system.matches?'dark':'light');
+ // Build a soft plant silhouette once; CSS moves the three crowns independently.
+ var leaves=document.getElementById('dappledLeaves'),ns='http://www.w3.org/2000/svg';
+ function path(parent,d,attributes){var el=document.createElementNS(ns,'path');el.setAttribute('d',d);Object.keys(attributes||{}).forEach(function(key){el.setAttribute(key,attributes[key])});parent.appendChild(el);return el}
+ [[1220,-70,670,870],[1300,130,620,550],[1330,-90,830,420]].forEach(function(branch,crown){
+  var group=document.createElementNS(ns,'g');group.setAttribute('class','foliage-crown');leaves.appendChild(group);
+  var x=branch[0],y=branch[1],dx=branch[2]-x,dy=branch[3]-y;
+  path(group,'M'+x+' '+y+' Q'+(x-90)+' '+(y+dy*.6)+' '+(x+dx)+' '+(y+dy),{fill:'none','stroke-width':'8','stroke-linecap':'round'});
+  for(var i=0;i<12;i++){
+   var t=(i+.5)/12,bx=x+dx*t+Math.sin(t*Math.PI)*55,by=y+dy*t;
+   var side=i%2===0?-1:1,angle=(side<0?205:105)+crown*13+i*2,length=100+(i%4)*22;
+   var twigEndX=bx+side*(65+i%3*16),twigEndY=by-45;
+   path(group,'M'+bx+' '+by+' Q'+(bx+side*40)+' '+(by-8)+' '+twigEndX+' '+twigEndY,{fill:'none','stroke-width':'3'});
+   path(group,'M0 0 Q'+(length*.4)+' -38 '+length+' 0 Q'+(length*.42)+' 36 0 0',{stroke:'none',transform:'translate('+twigEndX+' '+twigEndY+') rotate('+angle+')'});
+   path(group,'M0 0 Q45 -22 88 0 Q35 24 0 0',{stroke:'none',transform:'translate('+bx+' '+by+') rotate('+(angle+70)+')'});
+  }
+ });
+ // The semantic amount stays exact immediately; only the aria-hidden digits roll.
+ var semanticPrice=document.getElementById('stickyTotal'),rollingPrice=document.getElementById('stickyRolling'),lastPrice=semanticPrice.textContent,priceFrame=null;
+ semanticPrice.setAttribute('aria-live','polite');semanticPrice.setAttribute('aria-atomic','true');
+ function rollPrice(text){
+  if(priceFrame!==null){cancelAnimationFrame(priceFrame);priceFrame=null}
+  var old=lastPrice;lastPrice=text;rollingPrice.replaceChildren();
+  if(reduced&&reduced.matches){semanticPrice.parentElement.classList.remove('is-rolling');return}
+  var digits=text.replace(/\D/g,''),previous=old.replace(/\D/g,'').padStart(digits.length,'0').slice(-digits.length),increase=Number(digits)>=Number(old.replace(/\D/g,'')),index=0,tracks=[];
+  Array.from(text).forEach(function(char){
+   if(!/\d/.test(char)){var symbol=document.createElement('span');symbol.className='price-symbol';symbol.textContent=char;rollingPrice.appendChild(symbol);return}
+   var next=Number(char),before=Number(previous[index]),digit=document.createElement('span'),track=document.createElement('span');digit.className='price-digit';track.className='price-digit-track';
+   for(var n=0;n<30;n++){var number=document.createElement('span');number.textContent=String(n%10);track.appendChild(number)}
+   track.style.transform='translateY(-'+((10+before)*1.25)+'em)';digit.appendChild(track);rollingPrice.appendChild(digit);
+   var delta=increase?(next-before+10)%10:-((before-next+10)%10);
+   tracks.push({el:track,end:10+before+delta,index:index});index++;
+  });
+  semanticPrice.parentElement.classList.add('is-rolling');rollingPrice.dataset.value=text;
+  if(text===old){tracks.forEach(function(t){t.el.style.transform='translateY(-'+(t.end*1.25)+'em)'});return}
+  void rollingPrice.offsetWidth;
+  priceFrame=requestAnimationFrame(function(){priceFrame=null;tracks.forEach(function(t){t.el.style.transition='transform 620ms cubic-bezier(.22,1,.36,1) '+t.index*22+'ms';t.el.style.transform='translateY(-'+(t.end*1.25)+'em)'})});
+ }
+ document.addEventListener('studio:price',function(event){if(event.detail.text!==lastPrice)rollPrice(event.detail.text)});
+ if(reduced&&reduced.addEventListener)reduced.addEventListener('change',function(){rollPrice(semanticPrice.textContent)});
+ rollPrice(lastPrice);
+ var tabs=document.querySelector('.page-tabs'),marker=tabs.querySelector('.tab-indicator'),stage=document.querySelector('.studio-neon-stage'),observer=null,enterFrame=null;
+ function moveMarker(){var link=tabs.querySelector('[aria-current="page"]');if(!link)return;marker.style.width=link.offsetWidth+'px';marker.style.transform='translateX('+link.offsetLeft+'px)'}
+ function currentPage(){var key=location.hash.slice(1);return document.getElementById(({gallery:'galleryPage',faq:'faqPage'})[key]||'planPage')}
+ function replay(){
+  if(observer)observer.disconnect();
+  if(enterFrame!==null)cancelAnimationFrame(enterFrame);
+  var page=currentPage();document.querySelectorAll('.page-section').forEach(function(el){el.classList.remove('is-entering')});
+  var items=Array.from(page.querySelectorAll('.panel,.summary,.gallery-card,.page-intro,.faq-item'));
+  page.classList.remove('reveal-ready');
+  items.forEach(function(el,i){el.classList.add('reveal-item');el.classList.remove('is-visible');el.style.setProperty('--reveal-delay',Math.min(i%4*75,225)+'ms')});
+  moveMarker();
+  if(reduced&&reduced.matches){items.forEach(function(el){el.classList.add('is-visible')});return}
+  stage.classList.add('is-replaying');
+  // Commit the reset before restarting; repeated clicks must replay the animation.
+  void page.offsetWidth;void stage.offsetWidth;
+  enterFrame=requestAnimationFrame(function(){
+   enterFrame=null;page.classList.add('is-entering');stage.classList.remove('is-replaying');
+   if(typeof window.IntersectionObserver==='function'){
+    page.classList.add('reveal-ready');
+    observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}})},{threshold:.08,rootMargin:'0px 0px 20px 0px'});
+    items.forEach(function(el){observer.observe(el)});
+   }else items.forEach(function(el){el.classList.add('is-visible')});
+  });
+ }
+ tabs.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(e){link.classList.remove('is-pressed');void link.offsetWidth;link.classList.add('is-pressed');if(link.hash===location.hash||!location.hash&&link.hash==='#plan'){e.preventDefault();replay()}})});
+ document.addEventListener('studio:page',replay);window.addEventListener('resize',moveMarker,{passive:true});
+ if(reduced&&reduced.addEventListener)reduced.addEventListener('change',replay);
+ // Gallery filtering creates new cards: reveal only new visible content, without resetting the page.
+ if(typeof window.MutationObserver==='function')new MutationObserver(function(){var page=currentPage();page.querySelectorAll('.gallery-card:not(.reveal-item)').forEach(function(el,i){el.classList.add('reveal-item','is-visible');el.style.setProperty('--reveal-delay',Math.min(i%4*75,225)+'ms')})}).observe(document.getElementById('galleryGrid'),{childList:true});
+ replay();
  // This sidebar tracks sections within the current page. It never changes the page hash.
  var list=document.getElementById('sectionLinks'),indicator=document.getElementById('scrollLabel'),chapters=[],scrollFrame=null;
  function setActive(index){chapters.forEach(function(c,i){if(i===index)c.button.setAttribute('aria-current','step');else c.button.removeAttribute('aria-current')});indicator.textContent=chapters[index]?chapters[index].label:''}
