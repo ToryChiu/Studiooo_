@@ -18,6 +18,7 @@ for(const [saved,system,expected] of [[null,false,'light'],[null,true,'dark'],['
  p.d.getElementById('themeToggle').click();assert.equal(p.d.documentElement.dataset.theme,expected==='dark'?'light':'dark');
  assert.equal(p.w.localStorage.getItem('studio-theme'),p.d.documentElement.dataset.theme);assert.equal(p.d.getElementById('copy').dataset.text,before);assert.equal(p.d.getElementById('total').textContent,'¥6,988');
  assert.equal(p.d.querySelectorAll('#sectionLinks button').length,7);
+ assert.equal(p.d.querySelector('.signature').getAttribute('aria-current'),null);
  const headings=['cityHeading','photoHeading','makeupHeading','videoHeading','ceremonyHeading','locationHeading'];headings.forEach((id,i)=>{p.d.getElementById(id).closest('section').getBoundingClientRect=()=>({top:i*400-350})});p.d.getElementById('quote').getBoundingClientRect=()=>({top:3000});p.w.dispatchEvent(new p.w.Event('resize'));
  assert(p.d.querySelector('#sectionLinks button[aria-current="step"]').textContent.includes('套餐'));assert.equal(p.d.getElementById('scrollLabel').textContent,'套餐');
  p.d.querySelectorAll('#sectionLinks button')[2].click();assert.equal(p.w.location.hash,'#plan');assert.equal(p.d.getElementById('makeupHeading').closest('section').dataset.scrolled,'true');
@@ -26,5 +27,5 @@ for(const [saved,system,expected] of [[null,false,'light'],[null,true,'dark'],['
  assert(!p.events.includes('mousemove'));assert(!p.events.includes('pointermove'));assert.deepEqual(p.errors,[]);p.w.close();
 }
 const p=page(null,false,true);assert.equal(p.draws.frames,0);assert(p.draws.count>0);p.listeners['(prefers-color-scheme: dark)']({matches:true});assert.equal(p.d.documentElement.dataset.theme,'dark');p.w.close();
-const fallback=page(null,false,false,false);assert.equal(fallback.d.getElementById('total').textContent,'¥6,988');assert.deepEqual(fallback.errors,[]);fallback.w.close();
+const fallback=page(null,false,false,false);assert.equal(fallback.d.getElementById('total').textContent,'¥6,988');assert.equal(fallback.d.getElementById('waveCanvas').dataset.renderer,'gradient');assert.deepEqual(fallback.errors,[]);fallback.w.close();
 console.log('PASS themes, scroll chapters, section clicks, page navigation, quote isolation, reduced motion and WebGL fallback');

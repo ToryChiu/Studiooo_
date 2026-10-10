@@ -28,7 +28,7 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
 
 .recommend{font-size:10px;font-weight:400;color:#8a7760;background:#f3ede3;border-radius:5px;padding:3px 6px;margin-left:5px;white-space:nowrap}.reset-button{display:block;margin:15px auto 0;border:0;background:transparent;color:#cec4b7;font:inherit;font-size:11px;padding:8px 16px;cursor:pointer}.reset-button:focus-visible{outline:2px solid #cec4b7;outline-offset:2px}
 </style>
-<link rel="stylesheet" href="studio-visual.css?v=20261010-3">
+<link rel="stylesheet" href="studio-visual.css?v=20261010-4">
 <script>try{var savedTheme=localStorage.getItem("studio-theme");document.documentElement.dataset.theme=savedTheme==="dark"||savedTheme==="light"?savedTheme:window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}catch(e){}</script>
 </head>
 <body>
@@ -253,7 +253,7 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
   function navigate(focus){
     var key=location.hash.slice(1);if(!pages[key])key='plan';
     Object.keys(pages).forEach(function(name){pages[name].hidden=name!==key;pages[name].classList.toggle('hidden',name!==key)});
-    document.querySelectorAll('.site-nav a').forEach(function(link){if(link.hash==='#'+key)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current')});
+    document.querySelectorAll('.site-nav .page-tabs a').forEach(function(link){if(link.hash==='#'+key)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current')});
     document.getElementById('sticky').classList.toggle('hidden',key!=='plan');
     document.title='秋鸽 Studiooo_｜'+({plan:'报价&拍摄计划',gallery:'客片展示',faq:'Q&A'}[key]);
     if(focus){window.scrollTo(0,0);var heading=document.getElementById(key==='gallery'?'galleryHeading':key==='faq'?'faqHeading':'cityHeading');heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true})}
@@ -304,6 +304,6 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
  search.addEventListener('input',updateGallery);updateGallery();
 })();
 </script>
-<script src="studio-visual.js?v=20261010-3"></script>
+<script src="studio-visual.js?v=20261010-4"></script>
 </body>
 </html>
