@@ -1,11 +1,11 @@
 /* Scroll chapters inspired by the supplied React Bits LineSidebar. */
 :root{--page:#f8f7f4;--surface:#fff;--text:#2b2926;--muted:#82796e;--edge:#eae6e0;--accent:#897862;--horizon:#eee7dc;--wave:#d1bda4;--crest:#fffdf8;--float:0 14px 38px #61503e14;color-scheme:light;background:var(--page);color:var(--text)}
 :root[data-theme="dark"]{--page:#171817;--surface:#232422;--text:#eee9df;--muted:#b2aa9e;--edge:#3b3c36;--accent:#d2b991;--horizon:#22231f;--wave:#69533e;--crest:#c5af88;--float:0 18px 45px #0005;color-scheme:dark}
-body{isolation:isolate;background:transparent}main{position:relative;z-index:1}
+body{position:relative;isolation:isolate;background:transparent}main{position:relative;z-index:1}
 /* Original neon-light prototype; not the licensed React Bits Pro component. */
 :root{--tube:#ba997d;--spill:#d7c3dc;--quote-surface:#263e37;--quote-text:#f5f5e9;--quote-muted:#d3e0d6;--quote-edge:#51695f}
 :root[data-theme="dark"]{--tube:#e9ceae;--spill:#806580;--quote-surface:#314b41;--quote-text:#f4f3de;--quote-muted:#d1e2d4;--quote-edge:#65816b}
-.studio-neon-stage{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:transparent}
+.studio-neon-stage{position:absolute;top:0;left:0;right:0;height:min(720px,100vh);z-index:-1;overflow:hidden;pointer-events:none;background:transparent}
 .studio-neon-tube{position:absolute;top:88px;left:12%;width:76%;height:2px;border-radius:999px;background:var(--tube);transform-origin:center;box-shadow:0 0 8px color-mix(in srgb,var(--tube) 70%,transparent),0 0 28px color-mix(in srgb,var(--spill) 55%,transparent);animation:tube-ignite 1.1s cubic-bezier(.16,1,.3,1) both}
 .studio-neon-spill{position:absolute;inset:88px -12% -12%;background:radial-gradient(ellipse at 50% 0,color-mix(in srgb,var(--spill) 30%,transparent),transparent 68%);animation:light-pour 1.4s .16s ease-out both}
 .studio-neon-stage.is-replaying .studio-neon-tube,.studio-neon-stage.is-replaying .studio-neon-spill{animation:none}
@@ -22,16 +22,19 @@ body{isolation:isolate;background:transparent}main{position:relative;z-index:1}
 .sticky{background:color-mix(in srgb,var(--page) 96%,transparent);border-color:var(--edge);color:var(--text)}.summary .hint{color:var(--quote-muted)}.page-link,.gallery-tag,.recommend{background:color-mix(in srgb,var(--accent) 12%,var(--surface));color:var(--accent)}.gallery-card a{color:var(--accent)}.tag-button{color:var(--muted)}.tag-button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--page)}
 [data-theme="dark"] .choice input:checked+.tile{background:#302d26;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}[data-theme="dark"] .choice input:disabled+.tile{background:#22231f;color:#807e77;border-color:#34352f}[data-theme="dark"] .moscow-choice input:disabled+.tile .meta{color:#807e77}[data-theme="dark"] .moscow-choice input:checked+.tile:after{background:var(--accent);border-color:var(--accent);color:#211e18}[data-theme="dark"] .sticky-button{background:#d2b991;color:#211e18}
 .summary{background:var(--quote-surface);color:var(--quote-text);border:1px solid var(--quote-edge);box-shadow:none}.summary .eyebrow,.summary .line span,.summary .total-label,.summary .rub,.summary .reset-button{color:var(--quote-muted)}.summary .line{border-color:var(--quote-edge)}.summary .action{background:var(--quote-text);color:var(--quote-surface)}
-@media(hover:hover) and (pointer:fine){.panel:hover,.summary:hover,.gallery-card:hover,.faq-layout:hover{transform:translateY(-4px);box-shadow:var(--float)}.choice:not(:has(input:disabled)):hover .tile{transform:translateY(-2px);box-shadow:0 6px 16px #0000000c}.tile{transition:background .2s,border-color .2s,box-shadow .2s,transform .2s}}
+:root{--card-hover-shadow:0 16px 42px #61503e24;--tile-hover-shadow:0 8px 22px #61503e20}
+:root[data-theme="dark"]{--card-hover-shadow:0 18px 46px #0008;--tile-hover-shadow:0 9px 25px #0006}
+.gallery-empty,.tile{transition:background .25s ease,border-color .25s ease,box-shadow .25s ease,transform .25s cubic-bezier(.22,1,.36,1)}
+@media(hover:hover) and (pointer:fine){.panel:hover,.summary:hover,.gallery-card:hover,.faq-layout:hover,.gallery-empty:hover{transform:translateY(-6px);box-shadow:var(--card-hover-shadow)}.choice:not(:has(input:disabled)):hover .tile{transform:translateY(-3px);box-shadow:var(--tile-hover-shadow)}.choice:hover input:checked+.tile,[data-theme="dark"] .choice:hover input:checked+.tile{box-shadow:inset 0 0 0 1px var(--accent),var(--tile-hover-shadow)}}
 @media(min-width:1120px){.line-sidebar{display:block;position:fixed;left:26px;top:50%;transform:translateY(-50%);z-index:4;width:165px}.line-sidebar ul{list-style:none;margin:0;padding:0 0 39px 38px}.line-sidebar li{position:relative;margin:0 0 8px}.line-sidebar li:not(:last-child):after{content:"";position:absolute;left:-38px;bottom:-4px;width:13px;height:1px;background:var(--muted);opacity:.35}.line-sidebar button{display:flex;align-items:center;gap:9px;min-height:38px;padding:8px 0;border:0;background:transparent;color:var(--muted);font:inherit;font-size:12px;cursor:pointer;transition:transform .2s,color .2s}.line-sidebar button:before{content:"";position:absolute;left:-38px;width:23px;height:1px;background:var(--muted);transition:width .2s,background .2s}.line-sidebar button:hover,.line-sidebar button[aria-current="step"]{color:var(--accent);transform:translateX(7px)}.line-sidebar button:hover:before,.line-sidebar button[aria-current="step"]:before{width:32px;background:var(--accent)}.line-index{font:10px ui-monospace,monospace;opacity:.65}.scroll-label{display:none}}
 @media(max-width:800px){.site-nav{padding:8px 12px}.nav-inner{display:flex;justify-content:center;gap:10px}.page-tabs{flex:0 1 auto;min-width:0}.theme-toggle{flex-shrink:0;width:34px;height:34px}.site-nav .page-tabs a{font-size:12px;padding:11px 12px}.page-section,.panel,.summary,.gallery-search,.gallery-grid,.faq-item{scroll-margin-top:90px}}
 @media(max-width:380px){.site-nav{padding:8px}.nav-inner{gap:6px}.site-nav .page-tabs a{font-size:11px;padding:11px 9px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}.line-sidebar button,.panel,.summary,.gallery-card,.faq-layout,.tile,.page-section{transform:none!important;translate:none!important}.reveal-ready .reveal-item:not(.is-visible){opacity:1;transform:none}.studio-neon-tube,.studio-neon-spill{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}.line-sidebar button,.panel,.summary,.gallery-card,.gallery-empty,.faq-layout,.tile,.page-section{transform:none!important;translate:none!important}.reveal-ready .reveal-item:not(.is-visible){opacity:1;transform:none}.studio-neon-tube,.studio-neon-spill{opacity:1;transform:none}}
 
 /* Original leaf-shadow prototype, separate from the retained neon light. */
 :root{--sunlight:#ecd3a4;--leaf-shadow:#6e705d}
 :root[data-theme="dark"]{--sunlight:#716545;--leaf-shadow:#080e0a}
-.studio-dappled-stage{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:var(--page)}
+.studio-dappled-stage{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden;background:var(--page)}
 .dappled-sunlight{position:absolute;inset:-20%;background:radial-gradient(ellipse at 85% 20%,color-mix(in srgb,var(--sunlight) 56%,transparent),transparent 58%);animation:sun-drift 22s ease-in-out infinite alternate}
 .studio-dappled-stage svg{position:absolute;right:-8%;top:-10%;width:100%;height:110%;overflow:visible;fill:var(--leaf-shadow);stroke:var(--leaf-shadow);filter:blur(7px);opacity:.22}
 .foliage-crown{transform-box:fill-box;transform-origin:top right;animation:leaf-sway 12s ease-in-out infinite alternate}.foliage-crown:nth-child(2){animation-duration:16s;animation-delay:-7s;opacity:.65}.foliage-crown:nth-child(3){animation-duration:19s;animation-delay:-11s;opacity:.4}
@@ -82,9 +85,8 @@ main:has(#faqPage:not([hidden])){max-width:1160px}
 .page-tabs:not(:has(a[aria-current="page"])) .tab-indicator{opacity:0}
 /* An editorial profile within the original page/theme system. Images retain their colors. */
 main:has(#aboutPage:not([hidden])){max-width:980px}
-main:has(#aboutPage:not([hidden]))>header{padding:28px 0 10px}
+main:has(#aboutPage:not([hidden]))>header{padding:49px 0 10px}
 main:has(#aboutPage:not([hidden]))>header .hero,main:has(#aboutPage:not([hidden]))>header .hint{display:none}
-body:has(#aboutPage:not([hidden])) .foliage-crown,body:has(#aboutPage:not([hidden])) .dappled-sunlight{animation:none}
 #aboutPage{padding-top:32px;color:var(--text)}
 .about-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:50px;align-items:center;padding:10px 0 65px}
 .about-identity{min-width:0}.about-identity h2{font-family:"Studio Typewriter",Georgia,serif;font-size:clamp(38px,5.5vw,64px);font-weight:400;letter-spacing:-2px;line-height:1.15;margin:35px 0 12px;overflow-wrap:normal}
