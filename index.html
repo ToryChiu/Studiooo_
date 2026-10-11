@@ -28,7 +28,7 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
 
 .recommend{font-size:10px;font-weight:400;color:#8a7760;background:#f3ede3;border-radius:5px;padding:3px 6px;margin-left:5px;white-space:nowrap}.reset-button{display:block;margin:15px auto 0;border:0;background:transparent;color:#cec4b7;font:inherit;font-size:11px;padding:8px 16px;cursor:pointer}.reset-button:focus-visible{outline:2px solid #cec4b7;outline-offset:2px}
 </style>
-<link rel="stylesheet" href="studio-visual.css?v=local-faq-unified-1">
+<link rel="stylesheet" href="studio-visual.css?v=booking-20261011-1">
 <script>try{var savedTheme=localStorage.getItem("studio-theme");document.documentElement.dataset.theme=savedTheme==="dark"||savedTheme==="light"?savedTheme:window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}catch(e){}</script>
 </head>
 <body>
@@ -63,6 +63,12 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
 <p id="remoteFreestyle" class="hint hidden">自由创作仅限武装力量大教堂场地区域内，不代表增加市区景点，也不延长约定拍摄时段。</p><label class="subheading" for="locationNote">地点备注（选填）</label><textarea id="locationNote" maxlength="500" rows="3" placeholder="喜欢的建筑、氛围或其他需求"></textarea><p class="hint">地点选择用于表达拍摄偏好，不代表逐一拍摄承诺。最终顺序与组合将结合场地规定、天气、光线、交通及新人状态由摄影师确认。</p></section>
 <section class="summary" id="quote" aria-live="polite"><div class="eyebrow">YOUR PERSONAL SELECTION</div><h2>你的专属拍摄方案</h2><div id="lines"><div class="line"><span>莫斯科 · A套餐（含妆造）</span><strong>¥6,988</strong></div></div><div class="total-label">预计总价 · 人民币参考金额</div><div class="total" id="total">¥6,988</div><div class="rub" id="rub">暂无需要折算的卢布项目</div><p class="hint" style="color:#c7beb4">参考汇率：1₽ = ¥0.08375（固定预算参考，非实时）。卢布费用按此参考汇率折算，仅供预算估计，最终按付款时双方确认的汇率结算。场地入场门票和未选择的额外服务另计。此报价为初步参考，档期、场地许可、额外门票及实际方案须由摄影师确认。</p><button type="button" class="action" id="copy">复制我的方案，发给摄影师 →</button><button type="button" class="reset-button" id="resetPlan">重置方案</button></section>
 <section id="manualCopy" class="panel hidden" aria-labelledby="manualCopyHeading"><h2 id="manualCopyHeading">手动复制方案</h2><p class="hint">浏览器未允许自动复制，请长按下方文字，选择全选并复制。</p><textarea id="manualQuote" rows="12" readonly></textarea><button type="button" class="action" id="closeManualCopy">关闭</button></section>
+<!-- booking:process -->
+<section class="panel booking-process" id="bookingProcess" aria-labelledby="bookingProcessHeading">
+<div class="eyebrow">BOOKING PROCESS</div><h2 id="bookingProcessHeading">约拍流程</h2>
+<ol class="booking-timeline"><li><span class="booking-number" aria-hidden="true">01</span><span>沟通拍摄日期及需求</span></li><li><span class="booking-number" aria-hidden="true">02</span><span>支付定金，确认档期</span></li><li><span class="booking-number" aria-hidden="true">03</span><span>摄影师按约定时间赴约</span></li><li><span class="booking-number" aria-hidden="true">04</span><span>完成拍摄，支付尾款</span></li><li><span class="booking-number" aria-hidden="true">05</span><span>摄影师返还底片</span></li><li><span class="booking-number" aria-hidden="true">06</span><span>客人选择精修照片</span></li><li><span class="booking-number" aria-hidden="true">07</span><span>摄影师完成精修并交付</span></li></ol>
+<p class="hint">如套餐不包含精修服务，则无需进行第6、7步。</p></section>
+<!-- /booking:process -->
 </div>
 <section id="galleryPage" class="page-section hidden" aria-labelledby="galleryHeading" hidden>
 <div class="page-intro"><div class="eyebrow">REAL STORIES / SELECTED WORK</div><h2 id="galleryHeading" tabindex="-1">客片展示</h2><p>在莫斯科与圣彼得堡，记录属于你们的真实瞬间。</p></div>
@@ -82,8 +88,41 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
 <details class="faq-item"><summary><span class="faq-number" aria-hidden="true">Q4</span><span class="faq-question">选择「摄影师自由创作」需要额外付费吗？</span><span class="faq-toggle" aria-hidden="true"></span></summary><div class="faq-answer"><p>不额外收费，也不占普通地点名额。摄影师会根据当天情况在附近灵活创作；此选项不承诺增加景点，也不延长约定拍摄时段。</p></div></details>
 <details class="faq-item"><summary><span class="faq-number" aria-hidden="true">Q5</span><span class="faq-question">卢布费用显示的人民币金额，如何结算？</span><span class="faq-toggle" aria-hidden="true"></span></summary><div class="faq-answer"><p>人民币金额仅供预算参考，实际结算汇率以确认时为准。场地门票及其他未选择的额外服务另计，具体费用与方案由双方最终确认。</p></div></details>
 </div></div>
+<p class="booking-faq-link"><a class="page-link" href="#booking-info">阅读完整约拍须知 ↗</a></p>
 </section>
-<footer class="foot">秋鸽 Studiooo_ · MOSCOW / SAINT PETERSBURG<br>具体拍摄路线、档期和场地许可，以双方最终确认的方案为准。<br>© 2026 秋鸽 Studiooo_</footer></main>
+<!-- booking:info -->
+<section id="bookingInfoPage" class="page-section hidden" aria-labelledby="bookingInfoHeading" hidden>
+<div class="page-intro"><div class="eyebrow">BOOKING INFORMATION</div><h2 id="bookingInfoHeading" tabindex="-1">约拍须知</h2><p>为确保拍摄顺利进行，请在预约前阅读以下说明。</p><a class="page-link" href="#plan">返回定制报价 →</a></div>
+<section class="panel booking-chapter" aria-labelledby="bookingChapter1"><div class="eyebrow" aria-hidden="true">01 /</div><h3 id="bookingChapter1">预约与定金</h3><p>不接受口头预约。</p>
+<p>确认拍摄日期、套餐及基本需求后，需要支付预约定金。<strong>定金到账后，档期才正式保留。</strong></p>
+<p>由于摄影师会为已确认订单预留档期，并可能因此拒绝其他预约，因此因客人个人原因取消拍摄，<strong>定金不予退还。</strong>请确认好时间及行程后再预约。</p></section>
+<section class="panel booking-chapter" aria-labelledby="bookingChapter2"><div class="eyebrow" aria-hidden="true">02 /</div><h3 id="bookingChapter2">前期沟通</h3><p>预约后，请尽量提前沟通拍摄地点、服装、妆造、时间安排及其他特殊需求。</p>
+<p>如有特别想拍摄的画面、姿势、构图、场景或参考图，请务必在拍摄前提出。</p>
+<p>拍摄当天临时增加的需求，摄影师会在时间及现场条件允许的情况下尽量配合，但无法保证全部完成。</p></section>
+<section class="panel booking-chapter" aria-labelledby="bookingChapter3"><div class="eyebrow" aria-hidden="true">03 /</div><h3 id="bookingChapter3">摄影风格、创作主导与人物呈现</h3><p>本账号发布的客片、样片及摄影作品，均由摄影师本人完成拍摄及后期制作。账号中长期展示的内容即为摄影师目前的个人创作风格。预约前请充分浏览作品，并确认自己认可并喜欢现有风格后再进行预约。</p>
+<p>客人可以提出自己希望记录的内容及个人偏好，但请尽量避免持续指定构图、机位、动作、用光或要求完全按照其他摄影师的作品进行拍摄，以免影响正常创作节奏及最终效果。</p>
+<p>如果您更偏好强摆拍、固定模板动作、大量网感姿势或高频复刻参考图，建议选择更符合个人审美及拍摄习惯的摄影师。</p>
+<p>不同客人的五官、骨相、身材比例、皮肤状态及镜头表现均存在差异，因此客片用于展示摄影风格和拍摄质量，不代表不同人物能够获得完全相同的外貌效果。</p>
+<p>摄影属于创作型服务。拍摄过程中涉及的构图、机位、光线、人物引导、拍摄节奏及整体画面风格，需要摄影师根据人物状态及现场情况即时判断。</p>
+<p>如对自己的脸型、牙齿、发际线、身材、左右脸、皮肤状态或其他外貌特征非常介意，请务必提前告知，以便摄影师在拍摄过程中尽可能通过机位和角度进行调整。</p>
+<p>后期以自然美化为原则，包括肤色、皮肤、局部线条、画面杂物及整体色彩调整等，不以大幅改变五官、骨相、身材比例或完全改变本人特征为主要修图方式。</p></section>
+<section class="panel booking-chapter" aria-labelledby="bookingChapter4"><div class="eyebrow" aria-hidden="true">04 /</div><h3 id="bookingChapter4">关于改期、取消及退款</h3><p>因客人个人原因取消拍摄，预约<strong>定金不予退还。</strong></p>
+<p>如因摄影师个人原因无法完成拍摄：</p>
+<p>距离约定拍摄日期3日以上取消：已支付款项全部退还；</p>
+<p><strong>距离约定拍摄日期3日以内取消：已支付款项全部退还，并额外补偿相当于预约定金10%的费用。</strong></p>
+<p>如因极端天气、政府临时管制、场馆临时关闭或其他双方均无法控制的情况影响拍摄，双方可优先协商改期。</p></section>
+<section class="panel booking-chapter" aria-labelledby="bookingChapter5"><div class="eyebrow" aria-hidden="true">05 /</div><h3 id="bookingChapter5">拍摄完成、尾款及照片交付</h3><p>拍摄完成后，按照约定支付剩余拍摄费用。</p>
+<p>底片交付后，已支付的拍摄费用不予退还。</p>
+<p>如套餐包含精修服务，客人收到全部底片后自行选择约定数量的照片，摄影师完成精修后返还最终成片。</p></section>
+<section class="panel booking-chapter" aria-labelledby="bookingChapter6"><div class="eyebrow" aria-hidden="true">06 /</div><h3 id="bookingChapter6">作品展示与隐私</h3><p>摄影作品的著作权归摄影师所有，摄影师默认保留将作品用于个人作品展示、社交平台及摄影宣传的权利。</p>
+<p>如客人暂时不希望作品公开，可在拍摄前提出<strong>最长6个月的隐私保留期</strong>。隐私保留期内，摄影师不公开发布该组作品；保留期结束后，摄影师可按照正常作品展示方式使用照片。隐私保留期自最终成片交付之日起计算。</p>
+<p>如客人仅要求本人身份或正面肖像不公开，并不等同于整组作品不得展示。摄影师可通过AI替换面部、裁切、遮挡、改变明显识别特征或其他匿名化处理方式，在无法合理识别客人本人身份的前提下，将作品用于展示摄影师本人的构图、光线、色彩及后期创作。</p>
+<p>如客人要求整组作品长期或永久不公开、不得以任何形式用于摄影师作品展示，请务必在预约前明确提出，并支付永久不公开服务费，<strong>费用为拍摄套餐金额的25%</strong>。</p>
+<p>如涉及公众人物、品牌、商业发布计划，或需要特定期限的独家发布，可根据实际使用限制单独沟通费用及期限。</p>
+<p>上述隐私或不公开服务仅针对作品的公开展示和发布安排，不代表摄影作品著作权转让。未在预约前提出不公开要求的订单，默认按照正常作品展示规则执行。</p></section>
+<a class="page-link" href="#plan">返回定制报价 →</a></section>
+<!-- /booking:info -->
+<footer class="foot">秋鸽 Studiooo_ · MOSCOW / SAINT PETERSBURG<br>具体拍摄路线、档期和场地许可，以双方最终确认的方案为准。<br><a class="footer-booking-link" href="#booking-info">约拍须知</a><br>© 2026 秋鸽 Studiooo_</footer></main>
 <div class="sticky" id="sticky"><div class="sticky-in"><div><div class="sticky-label">专属方案 · 参考总价</div><div class="sticky-total"><span id="stickyTotal">¥6,988</span><span id="stickyRolling" aria-hidden="true"></span></div></div><button class="sticky-button" type="button" id="goQuote">查看报价明细 ↑</button></div></div>
 <script>
 (function(){
@@ -252,15 +291,15 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
 <script>
 (function(){
   'use strict';
-  var pages={plan:document.getElementById('planPage'),gallery:document.getElementById('galleryPage'),faq:document.getElementById('faqPage')};
+  var pages={plan:document.getElementById('planPage'),gallery:document.getElementById('galleryPage'),faq:document.getElementById('faqPage'),'booking-info':document.getElementById('bookingInfoPage')};
   function navigate(focus){
     var key=location.hash.slice(1);if(!pages[key])key='plan';
     Object.keys(pages).forEach(function(name){pages[name].hidden=name!==key;pages[name].classList.toggle('hidden',name!==key)});
     document.querySelectorAll('.site-nav .page-tabs a').forEach(function(link){if(link.hash==='#'+key)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current')});
     document.getElementById('sticky').classList.toggle('hidden',key!=='plan');
-    document.title='秋鸽 Studiooo_｜'+({plan:'报价&拍摄计划',gallery:'客片展示',faq:'FAQ'}[key]);
+    document.title='秋鸽 Studiooo_｜'+({plan:'报价&拍摄计划',gallery:'客片展示',faq:'FAQ','booking-info':'约拍须知'}[key]);
     document.dispatchEvent(new CustomEvent('studio:page',{detail:{key:key}}));
-    if(focus){window.scrollTo(0,0);var heading=document.getElementById(key==='gallery'?'galleryHeading':key==='faq'?'faqHeading':'cityHeading');heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true})}
+    if(focus){window.scrollTo(0,0);var heading=document.getElementById(key==='gallery'?'galleryHeading':key==='faq'?'faqHeading':key==='booking-info'?'bookingInfoHeading':'cityHeading');heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true})}
   }
   window.addEventListener('hashchange',function(){navigate(true)});navigate(false);
 })();
@@ -308,6 +347,6 @@ header{text-align:center;padding:49px 0 31px}.brand{font:21px Georgia,"Times New
  search.addEventListener('input',updateGallery);updateGallery();
 })();
 </script>
-<script src="studio-visual.js?v=local-faq-unified-1"></script>
+<script src="studio-visual.js?v=booking-20261011-1"></script>
 </body>
 </html>

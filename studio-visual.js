@@ -52,12 +52,12 @@
  rollPrice(lastPrice);
  var tabs=document.querySelector('.page-tabs'),marker=tabs.querySelector('.tab-indicator'),stage=document.querySelector('.studio-neon-stage'),observer=null,enterFrame=null;
  function moveMarker(){var link=tabs.querySelector('[aria-current="page"]');if(!link)return;marker.style.width=link.offsetWidth+'px';marker.style.transform='translateX('+link.offsetLeft+'px)'}
- function currentPage(){var key=location.hash.slice(1);return document.getElementById(({gallery:'galleryPage',faq:'faqPage'})[key]||'planPage')}
+ function currentPage(){var key=location.hash.slice(1);return document.getElementById(({gallery:'galleryPage',faq:'faqPage','booking-info':'bookingInfoPage'})[key]||'planPage')}
  function replay(){
   if(observer)observer.disconnect();
   if(enterFrame!==null)cancelAnimationFrame(enterFrame);
   var page=currentPage();document.querySelectorAll('.page-section').forEach(function(el){el.classList.remove('is-entering')});
-  var items=Array.from(page.querySelectorAll('.panel,.summary,.gallery-card,.page-intro,.faq-item'));
+  var items=Array.from(page.querySelectorAll('.panel,.summary,.gallery-card,.page-intro,.faq-item,.booking-timeline li'));
   page.classList.remove('reveal-ready');
   items.forEach(function(el,i){el.classList.add('reveal-item');el.classList.remove('is-visible');el.style.setProperty('--reveal-delay',Math.min(i%4*75,225)+'ms')});
   moveMarker();
@@ -85,10 +85,10 @@
  function setActive(index){chapters.forEach(function(c,i){if(i===index)c.button.setAttribute('aria-current','step');else c.button.removeAttribute('aria-current')});indicator.textContent=chapters[index]?chapters[index].label:''}
  function track(){scrollFrame=null;if(!chapters.length)return;var threshold=Math.min(180,window.innerHeight*.3),active=0;chapters.forEach(function(c,i){if(c.target.getBoundingClientRect().top<=threshold)active=i});if(window.scrollY>0&&window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-8)active=chapters.length-1;setActive(active)}
  function rebuild(){
-  var page=location.hash==='#gallery'?'gallery':location.hash==='#faq'?'faq':'plan',targets=[];
+  var page=location.hash==='#gallery'?'gallery':location.hash==='#faq'?'faq':location.hash==='#booking-info'?'booking-info':'plan',targets=[];
   if(page==='plan')targets=[['城市','cityHeading'],['套餐','photoHeading'],['妆造','makeupHeading'],['视频','videoHeading'],['仪式','ceremonyHeading'],['地点','locationHeading'],['报价','quote']].map(function(x){var el=document.getElementById(x[1]);return {label:x[0],target:x[1]==='quote'?el:el.closest('section')}});
   else if(page==='gallery')targets=[{label:'概览',target:document.getElementById('galleryPage')},{label:'筛选',target:document.getElementById('gallerySearch')},{label:'客片',target:document.getElementById('galleryGrid')}];
-  list.parentElement.hidden=page==='faq';indicator.hidden=page==='faq';
+  list.parentElement.hidden=(page==='faq'||page==='booking-info');indicator.hidden=(page==='faq'||page==='booking-info');
   list.replaceChildren();chapters=[];targets.forEach(function(c,i){if(!c.target)return;var li=document.createElement('li'),b=document.createElement('button'),index=document.createElement('span');b.type='button';index.className='line-index';index.setAttribute('aria-hidden','true');index.textContent=String(i+1).padStart(2,'0');b.appendChild(index);b.appendChild(document.createTextNode(c.label));b.addEventListener('click',function(){c.target.scrollIntoView({behavior:reduced&&reduced.matches?'auto':'smooth',block:'start'});setActive(i)});li.appendChild(b);list.appendChild(li);c.button=b;chapters.push(c)});track();
  }
  window.addEventListener('scroll',function(){if(scrollFrame===null)scrollFrame=requestAnimationFrame(track)},{passive:true});window.addEventListener('resize',track,{passive:true});window.addEventListener('hashchange',rebuild);rebuild();
