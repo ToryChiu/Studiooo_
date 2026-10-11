@@ -82,6 +82,9 @@ main:has(#faqPage:not([hidden])){max-width:1160px}
 .page-tabs:not(:has(a[aria-current="page"])) .tab-indicator{opacity:0}
 /* An editorial profile within the original page/theme system. Images retain their colors. */
 main:has(#aboutPage:not([hidden])){max-width:980px}
+main:has(#aboutPage:not([hidden]))>header{padding:28px 0 10px}
+main:has(#aboutPage:not([hidden]))>header .hero,main:has(#aboutPage:not([hidden]))>header .hint{display:none}
+body:has(#aboutPage:not([hidden])) .foliage-crown,body:has(#aboutPage:not([hidden])) .dappled-sunlight{animation:none}
 #aboutPage{padding-top:32px;color:var(--text)}
 .about-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:50px;align-items:center;padding:10px 0 65px}
 .about-identity{min-width:0}.about-identity h2{font-family:"Studio Typewriter",Georgia,serif;font-size:clamp(38px,5.5vw,64px);font-weight:400;letter-spacing:-2px;line-height:1.15;margin:35px 0 12px;overflow-wrap:normal}
